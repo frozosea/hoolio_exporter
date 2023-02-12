@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/ -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>TNET - Вход</title>
+		<meta name="description" lang="ru" content="Пройдите авторизацию и получите доступ ко всем услугам с одного профиля">
+	<meta property="og:description" content="Пройдите авторизацию и получите доступ ко всем услугам с одного профиля">
+			<meta property="og:title" content="Вход">
+		<meta property="og:site_name" content="Auth.tnet.ge">
+	<meta property="og:image" content="https://auth.tnet.ge/templates/assets/img/og_image.png">
+	<meta property="og:url" content="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/">
+	<meta property="og:type" content="website">
+	<meta property="fb:app_id" content="176377993018323">
+	<meta property="fb:admins" content="100000993379506">
+	<meta content="ru" http-equiv="Content-Language">
+	<link href="https://auth.tnet.ge/favicon.ico" rel="shortcut icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="canonical" href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/">
+		<link rel="alternate" href="https://auth.tnet.ge/ka/user/login/?Continue=https://www.myhome.ge/" hreflang="ka">
+		<link rel="alternate" href="https://auth.tnet.ge/en/user/login/?Continue=https://www.myhome.ge/" hreflang="en">
+		<link rel="alternate" href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/" hreflang="ru">
+		<link rel="alternate" href="https://auth.tnet.ge/az/user/login/?Continue=https://www.myhome.ge/" hreflang="az">
+		<link rel="alternate" href="https://auth.tnet.ge/hy/user/login/?Continue=https://www.myhome.ge/" hreflang="hy">
+			<!--<link rel="manifest" href="/manifest.json">-->
+	<!--<meta name="theme-color" content="#ffffff">-->
+	<link rel="stylesheet" href="./auth_page_files/select2.min.css">
+	<link rel="stylesheet" href="./auth_page_files/index.min.css">
+	<script src="./auth_page_files/sdk.js" async="" crossorigin="anonymous"></script><script type="text/javascript">
+		var URI = "https://auth.tnet.ge/ru/";
+		var API_URL = "https://accounts.tnet.ge/api/";
+		var LANG_CODE = "ru";
+		var DEFAULT_RETURN_URL = 'https://www.my.ge//';
+		const AUTHENTICATOR_URL = 'https://auth.myshop.ge/';
+		const GOOGLE_CLIENT_ID = '350776855690-b0t1j8geg9jit1tv6gk8in79jcjhc8fb.apps.googleusercontent.com'
+	</script>
+	<script type="text/javascript" src="./auth_page_files/jquery.min.js"></script>
+	<script type="text/javascript" src="./auth_page_files/select2.min.js"></script>
+		<style type="text/css">
+		html[lang="ka"] .wrapper .container h2 {
+			text-transform: lowercase!important;
+		}
+	</style>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId            : '176377993018323',
+				autoLogAppEvents : true,
+				xfbml            : true,
+				version          : 'v14.0'
+			});
+		};
+	</script>
+	<script async="" defer="" crossorigin="anonymous" src="./auth_page_files/sdk(1).js"></script>
+
+		</head>
+<body class="">
+<div class="wrapper">
+
+	<div class="container px-lg-80px">
+				<div class="header d-flex justify-content-between py-34px px-20px align-items-center">
+			<a href="https://auth.tnet.ge/" class="d-flex align-items-center">
+				
+<svg width="47" height="45" viewBox="0 0 47 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="45">
+        <path d="M18.5819 42.8655C9.20988 40.8225 2.20518 32.4882 2.20518 22.5C2.20518 12.5118 9.20988 4.17753 18.5819 2.13449C19.1656 2.00477 19.5224 1.42105 19.3926 0.837323C19.2629 0.253598 18.6792 -0.103123 18.0955 0.0265936C7.75057 2.26421 0 11.4741 0 22.5C0 33.5259 7.75057 42.7034 18.0955 44.9734C18.6792 45.1031 19.2629 44.7464 19.3926 44.1627C19.5224 43.5465 19.1656 42.9952 18.5819 42.8655Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask0_221_26829)">
+        <path d="M46.1465 -0.62207H-0.129883V45.6544H46.1465V-0.62207Z" fill="url(#paint0_linear_221_26829)"></path>
+    </g>
+    <mask id="mask1_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="26" y="0" width="21" height="45">
+        <path d="M27.9214 0.0265936C27.3377 -0.103123 26.754 0.253598 26.6242 0.837323C26.4945 1.42105 26.8513 2.00477 27.435 2.13449C36.807 4.17753 43.8117 12.5118 43.8117 22.5C43.8117 32.4882 36.807 40.8225 27.435 42.8655C26.8513 42.9952 26.4945 43.5789 26.6242 44.1627C26.754 44.7464 27.3377 45.1031 27.9214 44.9734C38.2663 42.7358 46.0169 33.5259 46.0169 22.5C45.9845 11.4741 38.2339 2.29663 27.9214 0.0265936Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask1_221_26829)">
+        <path d="M46.1465 -0.62207H-0.129883V45.6544H46.1465V-0.62207Z" fill="url(#paint1_linear_221_26829)"></path>
+    </g>
+    <mask id="mask2_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="10" y="5" width="31" height="23">
+        <path d="M38.4927 27.2346C39.0764 27.3643 39.6602 27.0076 39.7899 26.4239C41.4762 19.2246 38.363 11.4416 31.6177 7.55009C24.8725 3.65859 16.603 4.82605 11.1874 9.91743C10.7658 10.339 10.7334 11.02 11.1549 11.4416C11.5765 11.8632 12.2575 11.8956 12.6791 11.474C17.4138 7.03123 24.6455 5.9935 30.5476 9.39856C36.4497 12.8036 39.1737 19.6137 37.682 25.905C37.5523 26.5212 37.909 27.1049 38.4927 27.2346Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask2_221_26829)">
+        <path d="M46.1465 -0.62207H-0.129883V45.6544H46.1465V-0.62207Z" fill="url(#paint2_linear_221_26829)"></path>
+    </g>
+    <mask id="mask3_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="5" y="17" width="31" height="23">
+        <path d="M34.8612 33.5259C34.4397 33.1043 33.7586 33.0719 33.3371 33.4935C28.6024 37.9363 21.3707 38.974 15.4686 35.569C9.5665 32.1639 6.84245 25.3538 8.33419 19.0625C8.46391 18.4788 8.10719 17.8951 7.52347 17.7654C6.93974 17.6356 6.35602 17.9924 6.2263 18.5761C4.53998 25.7754 7.65319 33.5583 14.3985 37.4498C21.1437 41.3413 29.4132 40.1739 34.8288 35.0825C35.2504 34.6609 35.2828 33.9799 34.8612 33.5259Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask3_221_26829)">
+        <path d="M46.1465 -0.62207H-0.129883V45.6544H46.1465V-0.62207Z" fill="url(#paint3_linear_221_26829)"></path>
+    </g>
+    <mask id="mask4_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="16" y="21" width="18" height="13">
+        <path d="M17.4161 31.7102C20.659 33.6884 24.8748 33.8505 28.3772 31.8399C31.9119 29.7968 33.8253 26.0675 33.7604 22.2733C33.7604 21.6896 33.2415 21.2031 32.6578 21.2031C32.0741 21.2031 31.5877 21.722 31.5877 22.3057C31.6525 25.3541 30.0959 28.3375 27.2746 29.959C24.4533 31.5805 21.113 31.4507 18.4863 29.8617C17.9674 29.5699 17.3188 29.732 16.9945 30.2184C16.7675 30.7373 16.9297 31.4183 17.4161 31.7102Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask4_221_26829)">
+        <path d="M46.1475 -0.621582H-0.128906V45.6548H46.1475V-0.621582Z" fill="url(#paint4_linear_221_26829)"></path>
+    </g>
+    <mask id="mask5_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="11" width="18" height="13">
+        <path d="M28.9585 14.7502C29.2503 14.2313 29.0882 13.5827 28.6018 13.2585C25.3588 11.2803 21.1431 11.1181 17.6407 13.1287C14.1059 15.1718 12.1926 18.9011 12.2575 22.6953C12.2575 23.2791 12.7763 23.7655 13.3601 23.7655C13.9438 23.7655 14.4302 23.2466 14.4302 22.6629C14.3654 19.6146 15.922 16.6311 18.7433 15.0096C21.5646 13.3882 24.9048 13.5179 27.5316 15.1069C27.9856 15.4312 28.6342 15.2691 28.9585 14.7502Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask5_221_26829)">
+        <path d="M46.1465 -0.621582H-0.129883V45.6548H46.1465V-0.621582Z" fill="url(#paint5_linear_221_26829)"></path>
+    </g>
+    <mask id="mask6_221_26829" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="19" y="19" width="8" height="7">
+        <path d="M23.0232 19.2578C21.2396 19.2578 19.7803 20.7171 19.7803 22.5007C19.7803 24.2843 21.2396 25.7436 23.0232 25.7436C24.8068 25.7436 26.2661 24.2843 26.2661 22.5007C26.2661 21.009 25.2284 19.7442 23.8339 19.3551C23.5421 19.2902 23.2826 19.2578 23.0232 19.2578Z" fill="white"></path>
+    </mask>
+    <g mask="url(#mask6_221_26829)">
+        <path d="M46.1455 -0.621582H-0.130859V45.6548H46.1455V-0.621582Z" fill="url(#paint6_linear_221_26829)"></path>
+    </g>
+    <defs>
+        <lineargradient id="paint0_linear_221_26829" x1="-0.122521" y1="22.4999" x2="46.1417" y2="22.4999" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint1_linear_221_26829" x1="-0.122521" y1="22.4999" x2="46.1417" y2="22.4999" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint2_linear_221_26829" x1="-0.122521" y1="22.4999" x2="46.1417" y2="22.4999" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint3_linear_221_26829" x1="-0.122521" y1="22.4999" x2="46.1417" y2="22.4999" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint4_linear_221_26829" x1="-0.121545" y1="22.5004" x2="46.1427" y2="22.5004" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint5_linear_221_26829" x1="-0.122521" y1="22.5004" x2="46.1417" y2="22.5004" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+        <lineargradient id="paint6_linear_221_26829" x1="-0.123498" y1="22.5004" x2="46.1407" y2="22.5004" gradientUnits="userSpaceOnUse">
+            <stop offset="0.15" stop-color="#00E4BC"></stop>
+            <stop offset="0.5523" stop-color="#00B6D9"></stop>
+            <stop offset="1" stop-color="#3C74FF"></stop>
+        </lineargradient>
+    </defs>
+</svg>
+				<span class="font-bold is-uppercase pl-8px font-size-16">TNET</span>
+			</a>
+
+						<li class="langs-switcher position-relative z-index-9 cursor-pointer">
+				<a class="pr-3 font-size-14">Русский</a>
+				<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.98902 7.9973C6.75578 7.99782 6.52974 7.90487 6.35014 7.73458L0.360621 2.02324C0.156761 1.82936 0.0285612 1.55074 0.00422411 1.2487C-0.020113 0.946653 0.0614062 0.645916 0.230848 0.412646C0.40029 0.179376 0.643776 0.0326817 0.90774 0.00483352C1.1717 -0.0230146 1.43452 0.0702645 1.63838 0.264151L6.98902 5.38151L12.3397 0.446915C12.4418 0.352031 12.5593 0.281175 12.6854 0.238417C12.8115 0.19566 12.9438 0.181846 13.0746 0.197768C13.2054 0.213691 13.3321 0.259035 13.4475 0.331196C13.563 0.403358 13.6648 0.500913 13.7472 0.618254C13.8386 0.735704 13.9079 0.873491 13.9506 1.02298C13.9933 1.17248 14.0086 1.33045 13.9954 1.48702C13.9823 1.64358 13.9411 1.79535 13.8743 1.93283C13.8076 2.07031 13.7167 2.19053 13.6074 2.28596L7.61792 7.80311C7.43316 7.94649 7.21173 8.01486 6.98902 7.9973Z" fill="#5C5C5C"></path>
+</svg>
+				<ul class="level-two">
+										<li>
+						<a class="text-light-black " href="https://auth.tnet.ge/ka/user/login/?Continue=https://www.myhome.ge/">ქართული</a>
+					</li>
+										<li>
+						<a class="text-light-black " href="https://auth.tnet.ge/en/user/login/?Continue=https://www.myhome.ge/">English</a>
+					</li>
+										<li>
+						<a class="text-light-black font-bold" href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/">Русский</a>
+					</li>
+										<li>
+						<a class="text-light-black " href="https://auth.tnet.ge/az/user/login/?Continue=https://www.myhome.ge/">Azer</a>
+					</li>
+										<li>
+						<a class="text-light-black " href="https://auth.tnet.ge/hy/user/login/?Continue=https://www.myhome.ge/">Armenia</a>
+					</li>
+									</ul>
+			</li>
+		</div>
+				<div id="Box" class="box  px-10px px-lg-60px d-flex justify-content-sm-center justify-content-lg-between ">
+			
+<div class="w-100 max-width-650px max-width-lg-520px pt-lg-92px pt-md-58px">
+    <div class="overflow-hidden">
+        <div class="form-content">
+            <div>
+                <h2 class="font-size-lg-32 font-size-28 font-bold pt-md-0 pt-15px">Authorization</h2>
+                <form id="LoginForm" class="user-form pt-lg-48px pt-32px px-3px px-md-0 position-relative" action="https://accounts.tnet.ge/api/ru/user/auth" method="post" onsubmit="return user.logIn(this);">
+                    <div class="forms-group">
+                        <div class="pb-16px input-cont">
+                            <div class="input-container position-relative">
+                                <input class="w-100" type="text" name="Email" id="Email" placeholder="Эл. почта | Mobile Number" data-error="Укажите адрес эл. почты или телефон">
+                            </div>
+                        </div>
+                        <div class="pb-24px input-cont ">
+                            <div class="input-container position-relative">
+                                <input class="w-100 input-password" type="password" name="Password" id="Password" placeholder="Пароль" data-error="Укажите пароль">
+                                <i class="my-key eyes position-absolute top-15px right-15px opacity-50 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="forms-group captcha-container " style="display: none;">
+    <div class="d-flex w-100">
+        <div class="captcha-block d-flex pr-3">
+            <p class="captcha bg-light-gray-bg px-22px py-16px text-gray-250 border-0 rounded-md w-100" style="background-image:url(&#39;&#39;)" onclick="captcha.update(this, &#39;https://auth.tnet.ge/ru/user/getcaptcha/&#39;);" title="Обновления кода"></p>
+            <input type="hidden" name="CaptchaKey" class="CaptchaKey" value="">
+            <input type="hidden" name="CaptchaSig" class="CaptchaSig" value="">
+        </div>
+        <div class="captcha-input">
+            <input class="border-solid-1 rounded-md border-gray-150 px-20px py-15px w-100 max-width-160px text-uppercase" id="CaptchaVal" name="CaptchaVal" autocomplete="off" type="text" placeholder="Код " maxlength="0" data-lengths="[0]" data-error="Введите защитный код" disabled="">
+        </div>
+    </div>
+</div>
+                        <input type="hidden" id="FormToken" name="FormToken" value="69d798b6cbf0a50b7a82abe6537847c165231c47439d7cd4c108effd4eda1c1e">
+                    </div>
+                    <div class="helper d-flex justify-content-end align-items-center pb-32px">
+                        <a class="text-black font-medium" onclick="return user.recoverForm(event)" href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/#">Восстановить пароль </a>
+                    </div>
+                    <div class="btn-container container-lg">
+                        <button class="gradient-button w-100 border-0 text-white py-3 transition-all">Вход
+                        </button>
+                    </div>
+                    <input type="hidden" name="Continue" value="https://www.myhome.ge/">
+                    <div class="d-sm-flex d-block align-items-center justify-content-between pt-24px socials">
+                            <div onclick="user.googleLogin()" class="btn-container text-truncate font-size-14 d-flex align-items-center justify-content-center text-nowrap container-lg border-solid-1 rounded-md border-gray-150 px-20px py-14px cursor-pointer border-hover">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.31016 10C4.31016 9.35047 4.41797 8.72766 4.61063 8.14359L1.24031 5.57C0.58344 6.90359 0.21344 8.40641 0.21344 10C0.21344 11.5923 0.583127 13.0941 1.23891 14.4269L4.60735 11.8483C4.41656 11.2669 4.31016 10.6464 4.31016 10Z" fill="#FBBC05"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2276 4.09094C11.6387 4.09094 12.9133 4.59094 13.9147 5.40906L16.8278 2.5C15.0526 0.954531 12.7767 0 10.2276 0C6.27014 0 2.86889 2.26312 1.2403 5.57L4.61045 8.14359C5.38701 5.78641 7.60061 4.09094 10.2276 4.09094Z" fill="#EA4335"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2276 15.9091C7.60076 15.9091 5.38717 14.2136 4.61061 11.8564L1.2403 14.4295C2.86889 17.7369 6.27014 20 10.2276 20C12.6701 20 15.0022 19.1327 16.7523 17.5077L13.5533 15.0345C12.6506 15.6031 11.5139 15.9091 10.2276 15.9091Z" fill="#34A853"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7866 10C19.7866 9.40906 19.6955 8.77266 19.5589 8.18188H10.2277V12.0455H15.5989C15.3303 13.3628 14.5994 14.3755 13.5533 15.0345L16.7523 17.5077C18.5908 15.8014 19.7866 13.2595 19.7866 10Z" fill="#4285F4"></path>
+</svg>
+        <div class="btn-google pl-16px text-black text-truncate">
+            Google
+        </div>
+    </div>
+    <div onclick="user.facebookAuth()" class="btn-container text-truncate font-size-14 d-flex align-items-center justify-content-center text-nowrap container-lg border-solid-1 rounded-md border-gray-150 px-20px py-14px pl-10px cursor-pointer border-hover mt-16px mt-sm-0">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_5_94)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5565 0C18.9051 0 20 1.09492 20 2.44352V17.5565C20 18.9051 18.9051 20 17.5565 20H13.3976V12.4643H15.9991L16.4941 9.23688H13.3976V7.14246C13.3976 6.25953 13.8301 5.39887 15.2171 5.39887H16.625V2.65121C16.625 2.65121 15.3473 2.43316 14.1257 2.43316C11.5754 2.43316 9.90852 3.97883 9.90852 6.77707V9.23688H7.07363V12.4643H9.90852V20H2.44352C1.09492 20 0 18.9051 0 17.5565V2.44352C0 1.09492 1.09488 0 2.44352 0H17.5565V0Z" fill="#1777F2"></path>
+    </g>
+    <defs>
+        <clippath id="clip0_5_94">
+            <rect width="20" height="20" fill="white"></rect>
+        </clippath>
+    </defs>
+</svg>
+        <div class="btn-blue pl-16px text-black text-truncate">
+            Facebook
+        </div>
+    </div>
+    <div onclick="user.appleLogin()" class="signin-button btn-container text-truncate font-size-14 d-flex align-items-center justify-content-center text-nowrap container-lg border-solid-1 rounded-md border-gray-150 px-20px py-14px pl-10px cursor-pointer border-hover mt-16px mt-sm-0">
+        <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14.8456 17.5C14.0156 18.74 13.1356 19.95 11.7956 19.97C10.4556 20 10.0256 19.18 8.50559 19.18C6.97559 19.18 6.50559 19.95 5.23559 20C3.92559 20.05 2.93559 18.68 2.09559 17.47C0.38559 15 -0.92441 10.45 0.83559 7.39C1.70559 5.87 3.26559 4.91 4.95559 4.88C6.23559 4.86 7.45559 5.75 8.24559 5.75C9.02559 5.75 10.5056 4.68 12.0556 4.84C12.7056 4.87 14.5256 5.1 15.6956 6.82C15.6056 6.88 13.5256 8.1 13.5456 10.63C13.5756 13.65 16.1956 14.66 16.2256 14.67C16.1956 14.74 15.8056 16.11 14.8456 17.5ZM9.13559 1.5C9.86559 0.67 11.0756 0.04 12.0756 0C12.2056 1.17 11.7356 2.35 11.0356 3.19C10.3456 4.04 9.20559 4.7 8.08559 4.61C7.93559 3.46 8.49559 2.26 9.13559 1.5Z" fill="black"></path>
+</svg>
+        <div class="btn-blue pl-16px text-black text-truncate">
+            Apple ID
+        </div>
+    </div>
+
+    <div id="appleid-signin" class="signin-button" data-color="white" data-border="true" data-type="sign-in" style="height: 50px; position: absolute; left: -9000px;"></div>
+
+                    </div>
+                                        <div class="addition d-block d-sm-flex text-center justify-content-center align-items-center text-gray-250 pt-40px mb-75px mb-lg-0">
+                        არ გაქვს ანგარიში?&nbsp; —
+                        <div class="create pl-2 ">
+                            <a class="black-hover" href="https://auth.tnet.ge/ru/user/register/?Continue=https%3A%2F%2Fwww.myhome.ge%2F">Create Account</a>
+                        </div>
+                    </div>
+                                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.password-control').click(function () {
+            if ($(this).hasClass('hide-password')) {
+                $(this).removeClass('hide-password').attr('title', lang.ShowPassword);
+                //$(this).removeClass('hide-password').data('tooltip', lang.HidePassword);
+                //$(this).tooltip('update');
+                $(this).prev().attr('type', 'password');
+            } else {
+                $(this).addClass('hide-password').attr('title', lang.HidePassword);
+                //$(this).addClass('hide-password').data('tooltip', lang.ShowPassword);
+                //$(this).tooltip('update');
+                $(this).prev().attr('type', 'text');
+            }
+        });
+        user.unitePopup();
+    });
+    //
+    var $form = $('.register');
+
+    function validateEmail(email) {
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regex.test(email);
+    };
+
+    $form.on('keyup', 'input', function (e) {
+        var $this = $(this),
+            $input = $this.val();
+        if ($input.length > 0) {
+            $form.find('label').addClass('active');
+            if (validateEmail($input)) {
+                $form.find('button').addClass('active');
+                console.log(e);
+                if (e.which === 13) {
+                    $form.find('button').click();
+                    $this.blur();
+                }
+            } else {
+                $form.find('button').removeClass('active');
+            }
+            $(this).addClass('active');
+        } else {
+            $form.find('label').removeClass('active');
+            $form.find('button').removeClass('active');
+            $(this).removeClass('active');
+        }
+    });
+
+    $form.on('click', 'button.active', function (e) {
+        e.preventDefault;
+        var $this = $(this);
+        $(this).addClass('full');
+        $(this).html('Thanks!');
+
+        setTimeout(() => {
+            $form.find('input').val('').removeClass('active');
+            $form.find('label').removeClass('active');
+            $this.removeClass('full active');
+            $this.html('OK');
+        }, 1200);
+    })
+</script>
+						<div class="d-none d-lg-flex w-50 position-fixed right-100px pl-md-80px bg-center ">
+				<svg width="656" height="610" viewBox="0 0 656 610" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M395.242 304.984C395.242 329.417 375.435 349.253 350.971 349.253C326.506 349.253 306.699 329.417 306.699 304.984C306.699 280.55 326.506 260.714 350.971 260.714C375.435 260.714 395.242 280.55 395.242 304.984Z" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M170.356 73.8495C175.755 79.9578 175.169 89.2745 169.091 94.6733C143.053 117.718 121.735 145.483 106.063 176.272C74.0086 239.237 65.5863 314.634 88.3852 387.502C133.983 533.33 287.034 613.571 430.059 567.388C437.803 564.889 446.133 569.147 448.631 576.89C451.161 584.664 446.904 592.963 439.129 595.493C280.185 646.858 110.629 557.455 60.2183 396.325C35.0439 315.775 44.3609 232.45 79.7778 162.883C97.0851 128.886 120.686 98.1285 149.532 72.5846C155.64 67.1859 164.988 67.7412 170.356 73.8495Z" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M613.562 221.9C567.995 76.5656 414.913 -3.55193 271.888 42.538C264.114 45.0369 255.815 40.7796 253.316 33.0362C250.817 25.262 255.074 16.9633 262.849 14.4645C421.762 -36.7466 591.349 52.3792 641.76 213.046C666.965 293.38 657.648 376.49 622.2 445.871C604.523 480.485 580.366 511.705 550.688 537.465C544.549 542.802 535.232 542.154 529.864 536.015C524.526 529.845 525.174 520.529 531.344 515.191C558.092 491.961 579.935 463.764 595.946 432.483C628 369.703 636.392 294.583 613.624 221.9H613.562Z" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M139.457 285.293C147.602 285.293 154.204 291.895 154.204 300.039C154.204 411.346 244.042 501.706 354.179 501.706C407.582 501.706 457.746 480.79 495.538 442.69C514.481 423.625 529.104 401.443 539.038 377.319C542.123 369.791 550.762 366.182 558.289 369.267C565.848 372.352 569.426 380.99 566.341 388.517C554.957 416.251 538.144 441.703 516.517 463.483C473.202 507.136 415.511 531.229 354.21 531.229C227.536 531.229 124.741 427.388 124.741 300.039C124.741 291.895 131.343 285.293 139.488 285.293" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M348.378 108.215C294.913 108.215 244.811 128.267 207.142 164.609C187.706 183.366 172.836 205.269 162.995 229.024C159.879 236.551 151.24 240.161 143.713 237.014C136.185 233.898 132.606 225.26 135.722 217.733C147.137 190.153 164.352 164.886 186.688 143.353C229.972 101.644 287.447 78.6915 348.409 78.6915C474.157 78.6915 577.353 177.504 577.353 300.04C577.353 308.216 570.751 314.787 562.607 314.787C554.462 314.787 547.86 308.185 547.86 300.04C547.86 194.78 458.886 108.215 348.409 108.215" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M272.865 210.791C278.696 216.468 278.788 225.846 273.112 231.646C253.521 251.698 242.724 278.384 242.724 306.92C242.724 365.874 289.401 413.198 346.043 413.198C354.188 413.198 360.79 419.8 360.79 427.945C360.79 436.089 354.188 442.691 346.043 442.691C272.464 442.691 213.23 381.454 213.23 306.889C213.23 270.764 226.99 236.644 252.01 211.007C257.686 205.177 267.034 205.084 272.865 210.76" fill="#6273A2" fill-opacity="0.05"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M331.342 182.012C331.342 173.868 337.944 167.266 346.089 167.266C423.987 167.266 488.743 227.393 488.743 303.037C488.743 339.563 473.688 373.776 446.663 399.32C440.739 404.935 431.391 404.657 425.807 398.765C420.192 392.841 420.47 383.494 426.394 377.91C447.681 357.734 459.25 331.203 459.25 303.037C459.25 245.224 409.271 196.759 346.089 196.759C337.944 196.759 331.342 190.157 331.342 182.012Z" fill="#6273A2" fill-opacity="0.05"></path>
+										<a href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myauto.ge/" title="myauto">
+												<g filter="url(#filter1_d_175_2131)">
+    <rect x="430" y="21" width="162" height="64" rx="12" fill="white"></rect>
+</g>
+<path d="M556.561 33H465.439C454.708 33 446 41.7116 446 52.4478V53.5522C446 64.2884 454.708 73 465.439 73H556.561C567.292 73 576 64.2884 576 53.5522V52.4478C576 41.7116 567.292 33 556.561 33Z" fill="#FD4100"></path>
+<path d="M538.778 53.4294C538.778 61.7116 532.033 68.4601 523.693 68.4601H466.175C457.896 68.4601 451.09 61.7116 451.09 53.4294V52.5705C451.09 44.2883 457.835 37.5399 466.175 37.5399H523.693C531.972 37.5399 538.778 44.2883 538.778 52.5705V53.4294Z" fill="white"></path>
+<path d="M546.934 55.9448C546.934 56.865 546.137 57.6626 545.217 57.6626C544.236 57.6626 543.5 56.865 543.5 55.9448C543.5 55.0245 544.236 54.227 545.217 54.227C546.137 54.227 546.934 55.0245 546.934 55.9448Z" fill="white"></path>
+<path d="M556.929 48.092C556.316 48.2761 555.58 48.3374 554.538 48.3374C555.826 48.8896 556.439 49.6258 556.439 50.9141C556.439 52.8773 554.844 54.227 552.269 54.227C551.84 54.227 551.472 54.227 551.104 54.1043C550.859 54.227 550.736 54.4724 550.736 54.6564C550.736 54.9632 550.859 55.2699 551.84 55.2699H553.373C555.703 55.2699 557.175 56.4969 557.175 58.1534C557.175 60.2393 555.335 61.4663 551.901 61.4663C548.528 61.4663 547.363 60.4847 547.179 58.8282C547.118 58.5215 547.425 58.2761 547.731 58.2761H549.387C549.632 58.2761 549.816 58.3988 549.877 58.6442C550 59.2577 550.552 59.5031 552.024 59.5031C553.802 59.5031 554.17 59.0123 554.17 58.3988C554.17 57.7853 553.802 57.4172 552.76 57.4172H551.288C549.08 57.4172 548.222 56.4969 548.222 55.454C548.222 54.7178 548.712 53.9816 549.387 53.5522C548.099 52.8773 547.609 52.0184 547.609 50.6687C547.609 48.3988 549.387 46.9877 552.024 46.9877C553.925 47.0491 555.151 46.6196 556.193 46.0061C556.439 45.8834 556.807 46.0061 556.929 46.3129L557.297 47.4172C557.42 47.7239 557.297 48.0307 556.929 48.092ZM550.613 50.6687C550.613 51.773 551.227 52.3865 552.146 52.3865C553.127 52.3865 553.618 51.773 553.618 50.6687C553.618 49.5644 553.127 49.0123 552.146 49.0123C551.227 48.9509 550.613 49.6258 550.613 50.6687Z" fill="white"></path>
+<path d="M566.986 53.2454H560.793C560.976 55.0245 561.835 55.5153 563.061 55.5153C563.736 55.5153 564.349 55.3313 565.024 54.9018C565.269 54.7178 565.576 54.8405 565.698 55.0245L566.311 55.8834C566.495 56.1288 566.434 56.4356 566.189 56.6196C565.269 57.2331 564.104 57.7239 562.693 57.7239C559.382 57.7239 557.665 55.5767 557.665 52.4478C557.665 49.4417 559.321 47.0491 562.326 47.0491C565.208 47.0491 566.925 48.9509 566.925 52.2024C567.047 52.4478 567.047 52.9386 566.986 53.2454ZM564.104 51.2822C564.043 49.9325 563.675 48.9509 562.448 48.9509C561.467 48.9509 560.854 49.5644 560.731 51.4049H564.042V51.2822H564.104Z" fill="white"></path>
+<path d="M475.311 50.4233V57.908C475.311 58.2147 475.066 58.4601 474.759 58.4601H472.552C472.245 58.4601 472 58.2147 472 57.908V50.9755C472 49.8098 471.632 49.5031 471.08 49.5031C470.406 49.5031 469.915 50.0552 469.486 50.9141V57.8466C469.486 58.1534 469.241 58.3988 468.934 58.3988H466.665C466.42 58.3988 466.175 58.1534 466.175 57.8466V50.9141C466.175 49.7485 465.745 49.4417 465.193 49.4417C464.519 49.4417 464.028 49.9939 463.538 50.8528V57.7853C463.538 58.092 463.292 58.3374 463.047 58.3374H460.778C460.533 58.3374 460.226 58.092 460.226 57.7853V47.908C460.226 47.6012 460.472 47.3558 460.778 47.3558H462.679C462.925 47.3558 463.109 47.5399 463.17 47.7853L463.354 48.6442C464.212 47.5399 465.193 46.9877 466.542 46.9877C467.769 46.9877 468.689 47.6012 469.118 48.7055C469.976 47.5399 471.019 46.9877 472.368 46.9877C474.146 47.1718 475.311 48.3988 475.311 50.4233Z" fill="#414042"></path>
+<path d="M483.835 58.4601C482.976 61.0982 481.259 62.6319 478.193 62.9386C477.948 62.9386 477.642 62.7546 477.642 62.5092L477.458 61.2209C477.396 60.9755 477.58 60.6687 477.825 60.6687C479.297 60.4233 480.094 59.9325 480.585 59.0123C480.217 58.9509 479.788 58.3374 479.665 57.908L476.66 48.1534C476.538 47.8466 476.783 47.4785 477.151 47.4785H479.481C479.726 47.4785 479.91 47.6626 480.033 47.908L481.873 56.3742L483.958 47.908C484.019 47.6626 484.203 47.5399 484.448 47.5399H486.717C487.085 47.5399 487.33 47.908 487.208 48.2147L483.835 58.4601Z" fill="#414042"></path>
+<path d="M497.632 57.0491L497.203 58.3988C497.142 58.6442 496.896 58.7669 496.651 58.7669C495.609 58.5828 494.873 58.2147 494.443 57.2331C493.646 58.4601 492.481 58.8896 491.132 58.8896C488.986 58.8896 487.576 57.4785 487.576 55.454C487.576 53.0613 489.354 51.773 492.726 51.773H493.83V51.2822C493.83 49.9939 493.34 49.5644 491.991 49.5644C491.377 49.5644 490.519 49.6871 489.599 49.9939C489.354 50.0552 489.047 49.9325 488.925 49.6871L488.557 48.5215C488.495 48.2761 488.618 47.9693 488.863 47.8466C490.09 47.4785 491.439 47.2331 492.542 47.2331C495.731 47.2331 497.08 48.5215 497.08 51.0982V55.3313C497.08 55.9448 497.203 56.3129 497.448 56.4969C497.632 56.5583 497.693 56.8037 497.632 57.0491ZM493.83 55.454V53.4908H493.033C491.561 53.4908 490.826 54.043 490.826 55.0859C490.826 55.9448 491.316 56.4969 492.113 56.4969C492.849 56.4969 493.401 56.0675 493.83 55.454Z" fill="#414042"></path>
+<path d="M508.425 58.4601H506.585C506.34 58.4601 506.094 58.2761 506.094 57.9693L505.972 57.0491C505.236 58.2147 504.132 58.7669 502.66 58.7669C500.637 58.7669 499.656 57.4172 499.656 55.3313V48.0307C499.656 47.7239 499.901 47.4785 500.208 47.4785H502.415C502.66 47.4785 502.967 47.7239 502.967 48.0307V54.9632C502.967 56.0675 503.335 56.3742 504.01 56.3742C504.684 56.3742 505.297 55.9448 505.788 55.0859V48.0307C505.788 47.7239 506.033 47.4785 506.34 47.4785H508.547C508.854 47.4785 509.099 47.7239 509.099 48.0307V57.908C508.976 58.2147 508.731 58.4601 508.425 58.4601Z" fill="#414042"></path>
+<path d="M518.358 57.5399C518.481 57.7853 518.42 58.092 518.113 58.2147C517.377 58.5828 516.396 58.8282 515.599 58.8282C513.208 58.8282 511.981 57.4172 511.981 54.8405V49.8098H511C510.693 49.8098 510.448 49.5644 510.448 49.2577V48.0307C510.448 47.7239 510.693 47.4785 511 47.4785H511.981V45.5767C511.981 45.3313 512.226 45.0859 512.472 45.0245L514.679 44.7791C514.986 44.7178 515.231 44.9632 515.231 45.27V47.4172H517.193C517.5 47.4172 517.745 47.7239 517.684 48.0307L517.5 49.2577C517.439 49.5031 517.255 49.6871 516.948 49.6871H515.231V54.7178C515.231 55.7608 515.599 56.1288 516.274 56.1288C516.519 56.1288 516.764 56.0675 517.009 55.9448C517.255 55.8835 517.561 55.9448 517.684 56.1902L518.358 57.5399Z" fill="#414042"></path>
+<path d="M529.58 53C529.58 56.4969 527.557 58.8282 524.245 58.8282C520.934 58.8282 518.91 56.681 518.91 53C518.91 49.5031 520.934 47.1718 524.245 47.1718C527.557 47.1718 529.58 49.319 529.58 53ZM522.222 53C522.222 55.3926 522.896 56.4356 524.184 56.4356C525.533 56.4356 526.146 55.3926 526.146 53C526.146 50.546 525.472 49.5644 524.184 49.5644C522.896 49.5644 522.222 50.6074 522.222 53Z" fill="#414042"></path>											</a>
+										<a href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.mymarket.ge/" title="mymarket">
+												<g filter="url(#filter0_d_175_2131)">
+    <rect x="15" y="61" width="188" height="64" rx="12" fill="white"></rect>
+</g>
+
+<path d="M167.577 73H50.4234C39.7007 73 31 81.7116 31 92.4478V93.5522C31 104.288 39.7007 113 50.4234 113H167.577C178.299 113 187 104.288 187 93.5522V92.4478C186.939 81.7116 178.299 73 167.577 73Z" fill="#FFD102"></path>
+<path d="M149.808 93.4294C149.808 101.712 143.068 108.46 134.734 108.46H51.22C42.9482 108.46 36.1469 101.712 36.1469 93.4294V92.5705C36.1469 84.2883 42.8869 77.5399 51.22 77.5399H134.734C143.006 77.5399 149.808 84.2883 149.808 92.5705V93.4294Z" fill="white"></path>
+<path d="M157.957 95.9448C157.957 96.865 157.16 97.6626 156.241 97.6626C155.261 97.6626 154.526 96.865 154.526 95.9448C154.526 95.0245 155.261 94.227 156.241 94.227C157.16 94.227 157.957 95.0245 157.957 95.9448Z" fill="white"></path>
+<path d="M167.944 88.092C167.332 88.2147 166.596 88.3374 165.555 88.3374C166.841 88.8896 167.454 89.6258 167.454 90.9141C167.454 92.8773 165.861 94.227 163.288 94.227C162.859 94.227 162.491 94.227 162.123 94.1043C161.878 94.227 161.756 94.4724 161.756 94.6564C161.756 94.9632 161.878 95.2699 162.859 95.2699H164.39C166.719 95.2699 168.189 96.4969 168.189 98.1534C168.189 100.239 166.351 101.466 162.92 101.466C159.55 101.466 158.386 100.485 158.202 98.8282C158.141 98.5215 158.447 98.2761 158.753 98.2761H160.408C160.653 98.2761 160.837 98.3988 160.898 98.6442C161.02 99.2577 161.572 99.5031 163.042 99.5031C164.819 99.5031 165.187 99.0123 165.187 98.3988C165.187 97.7853 164.819 97.4172 163.778 97.4172H162.307C160.101 97.4172 159.244 96.4969 159.244 95.454C159.244 94.7178 159.734 93.9816 160.408 93.5522C159.121 92.8773 158.631 92.0184 158.631 90.6687C158.631 88.3988 160.408 86.9877 163.042 86.9877C164.942 87.0491 166.167 86.6196 167.209 86.0061C167.454 85.8834 167.822 86.0061 167.944 86.3129L168.312 87.4172C168.434 87.7239 168.251 88.0307 167.944 88.092ZM161.633 90.6687C161.633 91.773 162.246 92.3865 163.165 92.3865C164.145 92.3865 164.636 91.773 164.636 90.6687C164.636 89.5644 164.145 89.0123 163.165 89.0123C162.246 88.9509 161.633 89.6258 161.633 90.6687Z" fill="white"></path>
+<path d="M177.932 93.1841H171.743C171.927 94.9632 172.785 95.454 174.01 95.454C174.684 95.454 175.297 95.2699 175.971 94.8405C176.216 94.6564 176.522 94.7791 176.645 94.9632L177.258 95.8221C177.441 96.0675 177.38 96.3742 177.135 96.5583C176.216 97.1718 175.052 97.6626 173.643 97.6626C170.334 97.6626 168.618 95.5153 168.618 92.3865C168.618 89.3804 170.273 86.9877 173.275 86.9877C176.155 86.9877 177.87 88.8896 177.87 92.1411C177.993 92.4479 177.993 92.9387 177.932 93.1841ZM175.113 91.2822C175.052 89.9325 174.684 88.9509 173.459 88.9509C172.478 88.9509 171.866 89.5644 171.743 91.4049H175.052V91.2822H175.113Z" fill="white"></path>
+<path d="M140.617 97.5399C140.739 97.7853 140.678 98.092 140.372 98.2147C139.636 98.5828 138.656 98.8282 137.859 98.8282C135.47 98.8282 134.244 97.4172 134.244 94.9019V89.8712H133.264C132.958 89.8712 132.712 89.6258 132.712 89.319V88.092C132.712 87.7853 132.958 87.5399 133.264 87.5399H134.244V85.6381C134.244 85.3927 134.489 85.1473 134.734 85.0859L136.94 84.8405C137.247 84.7792 137.492 85.0246 137.492 85.3313V87.4785H139.452C139.759 87.4785 140.004 87.7853 139.943 88.092L139.759 89.319C139.698 89.5644 139.514 89.7485 139.207 89.7485H137.492V94.7792C137.492 95.8221 137.859 96.1902 138.533 96.1902C138.778 96.1902 139.024 96.1289 139.269 96.0062C139.514 95.9448 139.82 96.0062 139.943 96.2516L140.617 97.5399Z" fill="#414042"></path>
+<path d="M60.227 90.4233V97.908C60.227 98.2147 59.9819 98.4601 59.6756 98.4601H57.4697C57.1634 98.4601 56.9183 98.2147 56.9183 97.908V90.9755C56.9183 89.8098 56.5507 89.5031 55.9992 89.5031C55.3252 89.5031 54.835 90.0552 54.4061 90.9141V97.8466C54.4061 98.1534 54.161 98.3988 53.8547 98.3988H51.5876C51.3425 98.3988 51.0974 98.1534 51.0974 97.8466V90.9141C51.0974 89.7485 50.6685 89.4417 50.117 89.4417C49.443 89.4417 48.9529 89.9939 48.4627 90.8528V97.7853C48.4627 98.092 48.2176 98.3374 47.9725 98.3374H45.7054C45.4603 98.3374 45.154 98.092 45.154 97.7853V87.908C45.154 87.6012 45.3991 87.3558 45.7054 87.3558H47.6049C47.8499 87.3558 48.0338 87.5399 48.095 87.7853L48.2788 88.6442C49.1367 87.5399 50.117 86.9877 51.465 86.9877C52.6905 86.9877 53.6096 87.6012 54.0385 88.7055C54.8963 87.5399 55.9379 86.9877 57.2859 86.9877C59.1241 87.1718 60.227 88.3988 60.227 90.4233Z" fill="#414042"></path>
+<path d="M88.5962 90.4233V97.908C88.5962 98.2147 88.3511 98.4601 88.0448 98.4601H85.839C85.5326 98.4601 85.2875 98.2147 85.2875 97.908V90.9755C85.2875 89.8098 84.9199 89.5031 84.3684 89.5031C83.6944 89.5031 83.2042 90.0552 82.714 90.9141V97.8466C82.714 98.1534 82.469 98.3988 82.1626 98.3988H79.8955C79.6504 98.3988 79.4053 98.1534 79.4053 97.8466V90.9141C79.4053 89.7485 78.9764 89.4417 78.425 89.4417C77.751 89.4417 77.2608 89.9939 76.7706 90.8528V97.7853C76.7706 98.092 76.5255 98.3374 76.2804 98.3374H74.0133C73.7682 98.3374 73.4619 98.092 73.4619 97.7853V87.908C73.4619 87.6012 73.707 87.3558 74.0133 87.3558H75.9128C76.1579 87.3558 76.3417 87.5399 76.403 87.7853L76.5868 88.6442C77.4446 87.5399 78.425 86.9877 79.773 86.9877C80.9984 86.9877 81.9175 87.6012 82.3464 88.7055C83.2042 87.5399 84.2459 86.9877 85.5939 86.9877C87.432 87.1718 88.5962 88.3988 88.5962 90.4233Z" fill="#414042"></path>
+<path d="M68.8052 98.4601C67.9473 101.098 66.2317 102.632 63.1681 102.939C62.923 102.939 62.6166 102.755 62.6166 102.509L62.4328 101.221C62.3716 100.975 62.5554 100.669 62.8005 100.669C64.271 100.423 65.0675 99.9325 65.5577 99.0123C65.1901 98.9509 64.7612 98.3374 64.6386 97.908L61.6363 88.1534C61.5137 87.8466 61.7588 87.4785 62.1265 87.4785H64.4548C64.6999 87.4785 64.8837 87.6626 65.0063 87.908L66.8445 96.3742L68.9277 87.908C68.989 87.6626 69.1728 87.5399 69.4179 87.5399H71.685C72.0526 87.5399 72.2977 87.908 72.1751 88.2147L68.8052 98.4601Z" fill="#414042"></path>
+<path d="M131.916 92.7546C131.916 89.1963 130.016 87.1718 126.892 87.1718C123.583 87.1718 121.806 89.7485 121.806 93.0614C121.806 96.4969 123.644 98.8282 127.32 98.8282C128.73 98.8282 129.894 98.3988 130.874 97.7853C130.936 97.7853 130.936 97.7239 130.997 97.7239C131.058 97.7239 131.119 97.6626 131.119 97.6626C131.364 97.4785 131.426 97.1718 131.242 96.9877L130.568 95.9448C130.323 95.5767 129.955 95.7607 129.894 95.7607C129.771 95.8221 129.649 95.9448 129.465 96.0062C128.852 96.3743 128.24 96.4969 127.566 96.4969C126.218 96.4969 125.298 95.9448 125.053 93.9816H131.855C131.916 93.6135 131.916 93.1227 131.916 92.7546ZM128.73 91.9571H125.115C125.237 89.9939 125.911 89.319 127.014 89.319C128.301 89.319 128.791 90.362 128.791 91.8344V91.9571H128.73Z" fill="#414042"></path>
+<path d="M100.483 96.9877L100.054 98.3374C99.9929 98.5828 99.7478 98.7055 99.5027 98.7055C98.4611 98.5215 97.7258 98.1534 97.2969 97.1718C96.5004 98.3988 95.3362 98.8282 93.9882 98.8282C91.8437 98.8282 90.4344 97.4172 90.4344 95.3927C90.4344 93 92.2113 91.7117 95.5813 91.7117H96.6842V91.2209C96.6842 89.9325 96.194 89.5031 94.846 89.5031C94.2333 89.5031 93.3755 89.6258 92.4564 89.9325C92.2113 89.9939 91.9049 89.8712 91.7824 89.6258L91.4147 88.4601C91.3535 88.2147 91.476 87.908 91.7211 87.7853C92.9466 87.4172 94.2946 87.1718 95.3975 87.1718C98.5836 87.1718 99.9317 88.4601 99.9317 91.0368V95.27C99.9317 95.8834 100.054 96.2515 100.299 96.4356C100.483 96.5583 100.483 96.8037 100.483 96.9877ZM96.6229 95.3927V93.4295H95.8264C94.3558 93.4295 93.6205 93.9816 93.6205 95.0246C93.6205 95.8835 94.1108 96.4356 94.9073 96.4356C95.7038 96.4356 96.2553 96.0675 96.6229 95.3927Z" fill="#414042"></path>
+<path d="M109.123 87.2332H109C108.877 87.2332 108.694 87.2332 108.51 87.2332C107.223 87.2332 106.181 88.1534 105.691 89.6871L105.507 88.3375V88.2148V88.092C105.507 87.7853 105.262 87.5399 104.956 87.5399H104.343H103.853H103.118C102.811 87.5399 102.566 87.7853 102.566 88.092V88.3375V97.724V97.8467V97.9694C102.566 98.2761 102.811 98.5215 103.118 98.5215H105.324C105.63 98.5215 105.875 98.2761 105.875 97.9694V97.724V93C106.243 91.3436 106.794 90.4233 108.142 90.4233C108.265 90.4233 108.449 90.4233 108.571 90.4233H108.632H108.694C108.939 90.4233 109.184 90.2393 109.245 89.9939L109.613 87.8467C109.674 87.4786 109.429 87.2332 109.123 87.2332Z" fill="#414042"></path>
+<path d="M114.331 83.5522V83.4295C114.331 83.1227 114.086 82.8773 113.779 82.9387L111.573 83.1841C111.328 83.2454 111.083 83.4295 111.083 83.7362V83.7976V83.9203V83.8589V97.8467V97.7853V97.908V98.0307C111.083 98.3374 111.328 98.5828 111.635 98.5828H113.841C114.147 98.5828 114.392 98.3374 114.392 98.0307V97.9693V97.908V83.5522H114.331Z" fill="#414042"></path>
+<path d="M121.009 97.908L120.948 97.7853L117.762 92.2638L120.764 87.9693L120.826 87.908C121.009 87.6626 120.887 87.4785 120.642 87.4785H118.252C117.946 87.4785 117.639 87.6626 117.456 87.908L114.453 92.5092L117.394 97.908C117.578 98.2147 117.946 98.4601 118.252 98.4601H120.826C121.071 98.4601 121.193 98.2147 121.009 97.908Z" fill="#414042"></path>
+											</a>
+										<a href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myhome.ge/" title="myhome">
+												<g filter="url(#filter3_d_175_2131)">
+    <rect x="461" y="243" width="172" height="64" rx="12" fill="white"></rect>
+</g>
+<path d="M597.698 255H496.363C485.674 255 477 263.712 477 274.448V275.552C477 286.288 485.674 295 496.363 295H597.637C608.326 295 617 286.288 617 275.552V274.448C617.061 263.712 608.387 255 597.698 255Z" fill="#26B571"></path>
+<path d="M579.984 275.429C579.984 283.712 573.265 290.46 564.958 290.46H497.157C488.911 290.46 482.131 283.712 482.131 275.429V274.571C482.131 266.288 488.85 259.54 497.157 259.54H564.897C573.143 259.54 579.923 266.288 579.923 274.571V275.429H579.984Z" fill="white"></path>
+<path d="M588.108 277.945C588.108 278.865 587.314 279.663 586.398 279.663C585.42 279.663 584.687 278.865 584.687 277.945C584.687 277.025 585.42 276.227 586.398 276.227C587.314 276.227 588.108 277.025 588.108 277.945Z" fill="white"></path>
+<path d="M598.064 270.092C597.453 270.215 596.721 270.337 595.682 270.337C596.965 270.89 597.576 271.626 597.576 272.914C597.576 274.877 595.988 276.227 593.422 276.227C592.994 276.227 592.628 276.227 592.262 276.104C592.017 276.227 591.895 276.472 591.895 276.656C591.895 276.963 592.017 277.27 592.995 277.27H594.522C596.843 277.27 598.309 278.497 598.309 280.153C598.309 282.239 596.476 283.466 593.056 283.466C589.696 283.466 588.536 282.485 588.352 280.828C588.291 280.521 588.597 280.276 588.902 280.276H590.551C590.796 280.276 590.979 280.399 591.04 280.644C591.162 281.258 591.712 281.503 593.178 281.503C594.949 281.503 595.316 281.012 595.316 280.399C595.316 279.785 594.949 279.417 593.911 279.417H592.445C590.246 279.417 589.391 278.497 589.391 277.454C589.391 276.718 589.879 275.982 590.551 275.552C589.269 274.877 588.78 274.018 588.78 272.669C588.78 270.399 590.551 268.988 593.178 268.988C595.071 269.049 596.293 268.62 597.331 268.006C597.576 267.883 597.942 268.006 598.064 268.313L598.431 269.417C598.553 269.724 598.37 270.031 598.064 270.092ZM591.773 272.669C591.773 273.773 592.384 274.386 593.3 274.386C594.277 274.386 594.766 273.773 594.766 272.669C594.766 271.564 594.277 271.012 593.3 271.012C592.384 270.951 591.773 271.626 591.773 272.669Z" fill="white"></path>
+<path d="M608.082 275.245H601.912C602.096 277.025 602.951 277.515 604.173 277.515C604.844 277.515 605.455 277.331 606.127 276.902C606.371 276.718 606.677 276.84 606.799 277.025L607.41 277.883C607.593 278.129 607.532 278.436 607.288 278.62C606.371 279.233 605.211 279.724 603.806 279.724C600.508 279.724 598.797 277.577 598.797 274.448C598.797 271.442 600.446 269.049 603.44 269.049C606.31 269.049 608.021 270.951 608.021 274.202C608.082 274.448 608.082 274.939 608.082 275.245ZM605.211 273.282C605.15 271.933 604.783 270.951 603.562 270.951C602.584 270.951 601.974 271.564 601.851 273.405H605.15V273.282H605.211Z" fill="white"></path>
+<path d="M506.258 272.423V279.908C506.258 280.215 506.014 280.46 505.708 280.46H503.51C503.204 280.46 502.96 280.215 502.96 279.908V272.975C502.96 271.81 502.593 271.503 502.044 271.503C501.372 271.503 500.883 272.055 500.394 272.914V279.847C500.394 280.153 500.15 280.399 499.845 280.399H497.585C497.34 280.399 497.096 280.153 497.096 279.847V272.975C497.096 271.81 496.668 271.503 496.119 271.503C495.447 271.503 494.958 272.055 494.469 272.914V279.847C494.469 280.153 494.225 280.399 493.981 280.399H491.721C491.476 280.399 491.171 280.153 491.171 279.847V269.969C491.171 269.663 491.415 269.417 491.721 269.417H493.614C493.859 269.417 494.042 269.601 494.103 269.847L494.286 270.706C495.141 269.601 496.119 269.049 497.462 269.049C498.684 269.049 499.6 269.663 500.028 270.767C500.883 269.601 501.921 269.049 503.265 269.049C505.098 269.11 506.258 270.337 506.258 272.423Z" fill="#414042"></path>
+<path d="M558.666 272.423V279.908C558.666 280.215 558.422 280.46 558.117 280.46H555.918C555.612 280.46 555.368 280.215 555.368 279.908V272.975C555.368 271.81 555.002 271.503 554.452 271.503C553.78 271.503 553.291 272.055 552.803 272.914V279.847C552.803 280.153 552.558 280.399 552.253 280.399H549.993C549.749 280.399 549.504 280.153 549.504 279.847V272.975C549.504 271.81 549.077 271.503 548.527 271.503C547.855 271.503 547.366 272.055 546.878 272.914V279.847C546.878 280.153 546.633 280.399 546.389 280.399H544.129C543.885 280.399 543.579 280.153 543.579 279.847V269.969C543.579 269.663 543.824 269.417 544.129 269.417H546.023C546.267 269.417 546.45 269.601 546.511 269.847L546.694 270.706C547.55 269.601 548.527 269.049 549.871 269.049C551.092 269.049 552.009 269.663 552.436 270.767C553.291 269.601 554.33 269.049 555.673 269.049C557.506 269.11 558.666 270.337 558.666 272.423Z" fill="#414042"></path>
+<path d="M514.749 280.46C513.893 283.098 512.183 284.632 509.129 284.939C508.885 284.939 508.579 284.755 508.579 284.509L508.396 283.221C508.335 282.975 508.518 282.669 508.763 282.669C510.229 282.423 511.023 281.932 511.511 281.012C511.145 280.951 510.717 280.337 510.595 279.908L507.602 270.153C507.48 269.847 507.724 269.479 508.091 269.479H510.412C510.656 269.479 510.839 269.663 510.962 269.908L512.794 278.374L514.871 269.908C514.932 269.663 515.115 269.54 515.359 269.54H517.619C517.986 269.54 518.23 269.908 518.108 270.215L514.749 280.46Z" fill="#414042"></path>
+<path d="M541.625 274.939C541.625 278.436 539.609 280.767 536.31 280.767C533.012 280.767 530.996 278.62 530.996 274.939C530.996 271.442 533.012 269.11 536.31 269.11C539.609 269.11 541.625 271.258 541.625 274.939ZM534.295 274.939C534.295 277.331 534.967 278.374 536.249 278.374C537.532 278.374 538.204 277.331 538.204 274.939C538.204 272.485 537.532 271.503 536.249 271.503C534.967 271.503 534.295 272.546 534.295 274.939Z" fill="#414042"></path>
+<path d="M570.761 274.755C570.761 271.196 568.867 269.172 565.752 269.172C562.454 269.172 560.682 271.748 560.682 275.061C560.682 278.497 562.515 280.828 566.18 280.828C567.584 280.828 568.745 280.399 569.722 279.785C569.783 279.785 569.783 279.724 569.844 279.724C569.906 279.724 569.967 279.663 569.967 279.601C570.211 279.417 570.272 279.11 570.089 278.926L569.417 277.883C569.173 277.515 568.806 277.699 568.745 277.699C568.623 277.761 568.501 277.883 568.317 277.945C567.707 278.313 567.096 278.436 566.424 278.436C565.08 278.436 564.164 277.883 563.92 275.92H570.7C570.7 275.613 570.761 275.123 570.761 274.755ZM567.584 273.957H563.981C564.103 271.994 564.775 271.319 565.874 271.319C567.157 271.319 567.646 272.362 567.646 273.834V273.957H567.584Z" fill="#414042"></path>
+<path d="M528.981 272.423C528.981 270.337 527.82 269.11 525.988 269.11C524.705 269.11 523.728 269.601 522.872 270.644V266.902V265.307C522.872 265 522.628 264.755 522.323 264.816L520.124 265.061C519.879 265.123 519.635 265.307 519.635 265.613V265.675V279.847V279.969C519.635 280.276 519.879 280.521 520.185 280.521H522.384C522.689 280.521 522.934 280.276 522.934 279.969V272.975C523.483 272.117 524.094 271.564 524.827 271.564C525.438 271.564 525.865 271.871 525.865 273.037V279.847V279.969C525.865 280.276 526.11 280.521 526.415 280.521H528.614C528.92 280.521 529.164 280.276 529.164 279.969L528.981 272.423Z" fill="#414042"></path>											</a>
+										<a href="https://auth.tnet.ge/ru/user/login/?Continue=https://www.myparts.ge/" title="myparts">
+												<g filter="url(#filter2_d_175_2131)">
+    <rect x="99" y="310" width="170" height="64" rx="12" fill="white"></rect>
+</g>
+<path d="M233.54 322H134.46C123.717 322 115 330.712 115 341.448V342.552C115 353.288 123.717 362 134.46 362H233.54C244.283 362 253 353.288 253 342.552V341.448C253 330.712 244.283 322 233.54 322Z" fill="#009DB9"></path>
+<path d="M215.738 342.429C215.738 350.712 208.985 357.46 200.636 357.46H135.258C126.971 357.46 120.157 350.712 120.157 342.429V341.571C120.157 333.288 126.909 326.54 135.258 326.54H200.636C208.924 326.54 215.738 333.288 215.738 341.571V342.429Z" fill="white"></path>
+<path d="M196.584 346.54C196.707 346.785 196.646 347.092 196.339 347.215C195.602 347.583 194.62 347.828 193.822 347.828C191.428 347.828 190.2 346.417 190.2 343.84V338.81H189.218C188.911 338.81 188.666 338.564 188.666 338.258V337.031C188.666 336.724 188.911 336.479 189.218 336.479H190.2V334.577C190.2 334.331 190.446 334.086 190.691 334.025L192.901 333.779C193.208 333.718 193.454 333.963 193.454 334.27V336.417H195.418C195.725 336.417 195.971 336.724 195.909 337.031L195.725 338.258C195.664 338.503 195.48 338.687 195.173 338.687H193.454V343.718C193.454 344.761 193.822 345.129 194.497 345.129C194.743 345.129 194.988 345.067 195.234 344.945C195.48 344.883 195.786 344.945 195.909 345.19L196.584 346.54Z" fill="#414042"></path>
+<path d="M144.343 339.485V346.969C144.343 347.276 144.098 347.521 143.791 347.521H141.581C141.274 347.521 141.028 347.276 141.028 346.969V340.037C141.028 338.871 140.66 338.564 140.108 338.564C139.432 338.564 138.941 339.117 138.45 339.975V346.908C138.45 347.215 138.205 347.46 137.898 347.46H135.626C135.381 347.46 135.135 347.215 135.135 346.908V339.975C135.135 338.81 134.706 338.503 134.153 338.503C133.478 338.503 132.987 339.055 132.496 339.914V346.847C132.496 347.153 132.25 347.399 132.004 347.399H129.733C129.488 347.399 129.181 347.153 129.181 346.847V336.969C129.181 336.663 129.426 336.417 129.733 336.417H131.636C131.882 336.417 132.066 336.601 132.127 336.847L132.311 337.706C133.171 336.601 134.153 336.049 135.504 336.049C136.731 336.049 137.652 336.663 138.082 337.767C138.941 336.601 139.985 336.049 141.335 336.049C143.177 336.172 144.343 337.399 144.343 339.485Z" fill="#414042"></path>
+<path d="M152.876 347.521C152.017 350.159 150.298 351.693 147.229 352C146.983 352 146.676 351.877 146.676 351.571L146.492 350.282C146.431 350.037 146.615 349.73 146.86 349.73C148.334 349.485 149.132 348.994 149.623 348.074C149.254 348.012 148.825 347.399 148.702 346.969L145.694 337.215C145.571 336.908 145.817 336.54 146.185 336.54H148.518C148.763 336.54 148.948 336.724 149.07 336.969L150.912 345.436L152.999 336.969C153.06 336.724 153.245 336.601 153.49 336.601H155.762C156.13 336.601 156.375 336.969 156.253 337.276L152.876 347.521Z" fill="#414042"></path>
+<path d="M179.273 346.049L178.843 347.399C178.782 347.644 178.536 347.767 178.291 347.767C177.247 347.583 176.511 347.215 176.081 346.233C175.283 347.46 174.117 347.89 172.766 347.89C170.617 347.89 169.206 346.479 169.206 344.454C169.206 342.061 170.986 340.773 174.362 340.773H175.467V340.282C175.467 338.994 174.976 338.564 173.625 338.564C173.012 338.564 172.152 338.687 171.231 338.994C170.986 339.055 170.679 338.933 170.556 338.687L170.188 337.521C170.126 337.276 170.249 336.969 170.495 336.847C171.722 336.479 173.073 336.233 174.117 336.233C177.309 336.233 178.659 337.521 178.659 340.098V344.331C178.659 344.945 178.782 345.313 179.028 345.497C179.273 345.62 179.335 345.865 179.273 346.049ZM175.467 344.454V342.491H174.669C173.196 342.491 172.459 343.043 172.459 344.086C172.459 344.945 172.95 345.497 173.748 345.497C174.485 345.497 175.037 345.067 175.467 344.454Z" fill="#414042"></path>
+<path d="M202.969 340.712C201.004 340.16 200.698 339.914 200.698 339.301C200.698 338.81 201.127 338.503 201.987 338.503C202.723 338.503 203.399 338.687 204.074 338.994C204.135 339.055 204.197 339.055 204.258 339.117C204.504 339.239 204.811 339.178 204.933 338.932L205.609 337.89C205.731 337.644 205.67 337.337 205.486 337.215C205.424 337.153 205.24 337.092 205.24 337.092C204.319 336.54 203.153 336.233 201.864 336.233C199.101 336.233 197.383 337.706 197.383 339.546C197.383 341.264 198.426 342.368 200.636 342.982C202.601 343.534 202.969 343.779 202.969 344.515C202.969 345.19 202.355 345.558 201.373 345.558C200.513 345.558 199.715 345.313 199.04 344.883C198.979 344.822 198.856 344.761 198.795 344.699C198.61 344.577 198.303 344.638 198.119 344.883L197.321 345.988C197.137 346.233 197.198 346.54 197.383 346.724C197.444 346.785 197.505 346.847 197.567 346.908C198.61 347.583 199.899 348.012 201.434 348.012C204.135 348.012 206.284 346.663 206.284 344.393C206.345 342.245 205.179 341.325 202.969 340.712Z" fill="#414042"></path>
+<path d="M187.376 336.233H187.254C187.131 336.233 186.947 336.233 186.762 336.233C185.535 336.233 184.43 337.153 183.939 338.687L183.754 337.337V337.215V337.092C183.754 336.785 183.509 336.54 183.202 336.54H182.588H182.097H181.36C181.053 336.54 180.808 336.785 180.808 337.092V337.337V346.724V346.847V346.969C180.808 347.276 181.053 347.521 181.36 347.521H183.57C183.877 347.521 184.123 347.276 184.123 346.969V346.724V342C184.491 340.344 185.044 339.423 186.394 339.423C186.517 339.423 186.701 339.423 186.824 339.485H186.885H186.947C187.192 339.485 187.438 339.301 187.499 339.055L187.867 336.908C187.867 336.54 187.683 336.294 187.376 336.233Z" fill="#414042"></path>
+<path d="M163.926 336.172C162.821 336.172 161.655 336.601 160.795 337.767L160.734 337.337V337.215V337.092C160.734 336.785 160.488 336.54 160.182 336.54H159.568H159.076H158.34C158.033 336.54 157.787 336.785 157.787 337.092V337.399V348.564V351.325V351.264V351.448C157.787 351.755 158.033 352 158.34 351.939L160.55 351.693C160.795 351.632 161.041 351.448 161.041 351.141V351.018V351.08V351.018V346.663C161.716 347.399 162.637 347.767 163.681 347.767C166.382 347.767 168.039 345.313 168.039 341.939C167.978 338.442 166.75 336.172 163.926 336.172ZM162.637 345.436C161.962 345.436 161.471 345.129 160.98 344.454V339.853C161.471 339.055 162.085 338.564 162.883 338.564C163.988 338.564 164.663 339.301 164.663 342C164.601 344.454 163.865 345.436 162.637 345.436Z" fill="#414042"></path>
+<path d="M223.902 344.945C223.902 345.865 223.104 346.663 222.183 346.663C221.201 346.663 220.464 345.865 220.464 344.945C220.464 344.025 221.201 343.227 222.183 343.227C223.104 343.227 223.902 344.025 223.902 344.945Z" fill="white"></path>
+<path d="M233.908 337.092C233.295 337.276 232.558 337.337 231.514 337.337C232.803 337.89 233.417 338.626 233.417 339.914C233.417 341.877 231.821 343.227 229.243 343.227C228.813 343.227 228.445 343.227 228.077 343.104C227.831 343.227 227.708 343.472 227.708 343.656C227.708 343.963 227.831 344.27 228.813 344.27H230.348C232.681 344.27 234.154 345.497 234.154 347.153C234.154 349.239 232.312 350.466 228.875 350.466C225.498 350.466 224.332 349.485 224.148 347.828C224.086 347.521 224.393 347.276 224.7 347.276H226.358C226.603 347.276 226.787 347.399 226.849 347.644C226.972 348.258 227.524 348.503 228.997 348.503C230.778 348.503 231.146 348.012 231.146 347.399C231.146 346.785 230.778 346.417 229.734 346.417H228.261C226.051 346.417 225.191 345.497 225.191 344.454C225.191 343.718 225.682 342.982 226.358 342.552C225.069 341.877 224.577 341.018 224.577 339.669C224.577 337.399 226.358 335.988 228.997 335.988C230.9 336.049 232.128 335.62 233.172 335.006C233.417 334.883 233.786 335.006 233.908 335.313L234.277 336.417C234.399 336.724 234.215 337.031 233.908 337.092ZM227.585 339.669C227.585 340.773 228.199 341.386 229.12 341.386C230.102 341.386 230.593 340.773 230.593 339.669C230.593 338.564 230.102 338.012 229.12 338.012C228.199 337.951 227.585 338.626 227.585 339.669Z" fill="white"></path>
+<path d="M243.976 342.245H237.776C237.96 344.025 238.819 344.515 240.047 344.515C240.722 344.515 241.336 344.331 242.012 343.902C242.257 343.718 242.564 343.84 242.687 344.025L243.301 344.883C243.485 345.129 243.424 345.436 243.178 345.62C242.257 346.233 241.091 346.724 239.679 346.724C236.364 346.724 234.645 344.577 234.645 341.448C234.645 338.442 236.303 336.049 239.311 336.049C242.196 336.049 243.915 337.951 243.915 341.202C244.037 341.448 244.037 341.939 243.976 342.245ZM241.091 340.282C241.029 338.933 240.661 337.951 239.433 337.951C238.451 337.951 237.837 338.564 237.714 340.405H241.029V340.282H241.091Z" fill="white"></path>											</a>
+										<a href="https://auth.tnet.ge/ru/user/login/?Continue=https://livo.ge/" title="livo">
+												<g filter="url(#filter4_d_175_2131)">
+    <rect x="358" y="507" width="142" height="64" rx="12" fill="white"></rect>
+</g>
+<path d="M377.002 532.671C376.951 532.71 376.911 532.761 376.883 532.818C376.856 532.875 376.842 532.938 376.843 533.002V555.676C376.843 555.771 376.874 555.864 376.931 555.94C376.964 555.982 377.005 556.017 377.052 556.043C377.098 556.068 377.15 556.084 377.203 556.089C377.256 556.095 377.309 556.089 377.36 556.073C377.411 556.057 377.458 556.031 377.499 555.997L382.729 551.554C383.799 550.646 385.157 550.146 386.561 550.145H404.616C404.669 550.144 404.722 550.132 404.772 550.111C404.821 550.09 404.865 550.059 404.903 550.02C404.94 549.982 404.969 549.936 404.989 549.886C405.009 549.836 405.018 549.783 405.017 549.729V533.013C405.018 532.949 405.003 532.886 404.975 532.828C404.947 532.771 404.906 532.721 404.855 532.682L391.189 522C391.12 521.945 391.034 521.915 390.946 521.915C390.858 521.915 390.772 521.945 390.703 522L377.002 532.671ZM374.023 533.002C374.021 532.491 374.135 531.985 374.357 531.524C374.58 531.063 374.904 530.659 375.306 530.342L388.997 519.671C389.549 519.236 390.232 519 390.935 519C391.639 519 392.322 519.236 392.874 519.671L406.568 530.342C406.97 530.659 407.294 531.064 407.516 531.525C407.737 531.985 407.851 532.491 407.848 533.002V549.719C407.863 550.587 407.533 551.426 406.929 552.051C406.326 552.676 405.499 553.036 404.63 553.051H386.575C385.826 553.053 385.103 553.321 384.534 553.809L379.289 558.258C378.899 558.591 378.433 558.825 377.932 558.938C377.349 559.053 376.747 559.007 376.188 558.806C375.629 558.605 375.135 558.256 374.76 557.797C374.284 557.195 374.026 556.45 374.03 555.683C373.984 543.247 373.998 534.186 374.023 533.002ZM422.208 551.896C421.167 551.923 420.131 551.741 419.162 551.36C418.194 550.978 417.311 550.406 416.569 549.676C415.807 548.916 415.207 548.009 414.805 547.011C414.404 546.012 414.208 544.943 414.232 543.867V522.634C414.213 521.914 414.474 521.214 414.961 520.682C415.186 520.43 415.462 520.229 415.772 520.094C416.082 519.959 416.417 519.893 416.755 519.9C417.114 519.899 417.469 519.97 417.8 520.107C418.131 520.244 418.432 520.446 418.684 520.7C418.937 520.955 419.136 521.256 419.271 521.588C419.406 521.92 419.473 522.276 419.469 522.634V543.867C419.469 545.6 420.414 546.551 422.088 546.576H422.208C422.556 546.57 422.902 546.637 423.223 546.771C423.544 546.906 423.833 547.106 424.073 547.358C424.317 547.61 424.507 547.908 424.633 548.235C424.759 548.562 424.818 548.911 424.806 549.261C424.825 549.608 424.77 549.956 424.647 550.281C424.523 550.607 424.333 550.903 424.089 551.151C423.844 551.399 423.551 551.593 423.227 551.721C422.903 551.85 422.556 551.909 422.208 551.896ZM431.979 525.928C431.599 525.931 431.221 525.854 430.872 525.703C430.522 525.552 430.208 525.33 429.949 525.051C429.673 524.773 429.456 524.443 429.31 524.08C429.164 523.717 429.092 523.328 429.1 522.937C429.098 522.149 429.402 521.391 429.949 520.823C430.21 520.548 430.525 520.33 430.874 520.184C431.224 520.037 431.6 519.964 431.979 519.971C432.358 519.967 432.734 520.04 433.083 520.187C433.432 520.333 433.748 520.55 434.01 520.823C434.555 521.392 434.859 522.149 434.859 522.937C434.866 523.328 434.794 523.717 434.648 524.08C434.502 524.443 434.285 524.773 434.01 525.051C433.747 525.327 433.432 525.547 433.083 525.697C432.733 525.848 432.357 525.927 431.976 525.928H431.979ZM431.979 552.118C431.272 552.108 430.596 551.821 430.098 551.319C429.599 550.817 429.316 550.14 429.311 549.433V531.054C429.318 530.339 429.607 529.655 430.115 529.152C430.359 528.898 430.652 528.696 430.976 528.558C431.3 528.419 431.648 528.347 432.001 528.345C432.347 528.342 432.691 528.413 433.008 528.552C433.326 528.691 433.611 528.895 433.844 529.152C434.311 529.675 434.571 530.352 434.574 531.054V549.433C434.581 549.785 434.518 550.134 434.389 550.461C434.259 550.787 434.066 551.085 433.819 551.336C433.584 551.588 433.298 551.787 432.981 551.922C432.663 552.057 432.321 552.123 431.976 552.118H431.979ZM449.036 551.92C448.512 551.926 447.997 551.776 447.558 551.49C447.119 551.203 446.775 550.793 446.569 550.31L439.064 532.178C438.911 531.831 438.824 531.458 438.807 531.079C438.811 530.372 439.08 529.694 439.561 529.176C439.799 528.912 440.09 528.701 440.415 528.558C440.74 528.414 441.092 528.342 441.447 528.345C441.957 528.356 442.453 528.514 442.875 528.8C443.298 529.085 443.629 529.486 443.83 529.955L448.976 542.842L454.095 529.98C454.292 529.501 454.625 529.092 455.053 528.801C455.481 528.511 455.985 528.352 456.502 528.345C456.858 528.341 457.211 528.414 457.536 528.557C457.862 528.7 458.154 528.912 458.391 529.176C458.843 529.698 459.093 530.364 459.096 531.054C459.094 531.449 459.014 531.839 458.86 532.202L451.402 550.31C450.827 551.448 450.055 551.92 449.033 551.92H449.036ZM472.512 552.167C470.995 552.164 469.493 551.854 468.1 551.254C466.706 550.653 465.449 549.776 464.405 548.676C462.203 546.437 460.973 543.42 460.982 540.281C460.971 537.128 462.19 534.095 464.38 531.826C465.424 530.725 466.681 529.848 468.075 529.248C469.469 528.648 470.97 528.337 472.488 528.334C474.009 528.342 475.513 528.654 476.912 529.254C478.31 529.854 479.573 530.728 480.627 531.826C482.791 534.109 483.998 537.135 484 540.281C484.017 543.412 482.806 546.426 480.627 548.676C479.574 549.768 478.314 550.638 476.92 551.235C475.525 551.833 474.026 552.145 472.509 552.153L472.512 552.167ZM472.512 546.749C473.346 546.748 474.17 546.579 474.937 546.252C475.703 545.924 476.395 545.445 476.971 544.843C478.141 543.609 478.791 541.973 478.786 540.274C478.782 538.574 478.123 536.942 476.947 535.715C476.373 535.121 475.686 534.649 474.926 534.326C474.166 534.003 473.349 533.837 472.523 533.837C471.697 533.837 470.88 534.003 470.12 534.326C469.36 534.649 468.672 535.121 468.099 535.715C466.919 536.941 466.26 538.577 466.26 540.279C466.26 541.981 466.919 543.616 468.099 544.843C468.667 545.442 469.35 545.92 470.108 546.248C470.866 546.575 471.683 546.746 472.509 546.749H472.512Z" fill="#1552F5"></path>
+
+											</a>
+										    <rect x="190" y="137" width="24" height="24" rx="12" fill="#FFD102"></rect>
+    <g filter="url(#filter5_d_175_2131)">
+        <rect x="198" y="145" width="8" height="8" rx="4" fill="white"></rect>
+    </g>
+    <rect x="257" y="386" width="24" height="24" rx="12" fill="#009DB9"></rect>
+    <g filter="url(#filter6_d_175_2131)">
+        <rect x="265" y="394" width="8" height="8" rx="4" fill="white"></rect>
+    </g>
+    <rect x="457" y="323" width="24" height="24" rx="12" fill="#26B571"></rect>
+    <g filter="url(#filter7_d_175_2131)">
+        <rect x="465" y="331" width="8" height="8" rx="4" fill="white"></rect>
+    </g>
+    <rect x="418" y="97" width="24" height="24" rx="12" fill="#FD4100"></rect>
+    <g filter="url(#filter8_d_175_2131)">
+        <rect x="426" y="105" width="8" height="8" rx="4" fill="white"></rect>
+    </g>
+    <rect x="346" y="583" width="24" height="24" rx="12" fill="#1552F5"></rect>
+    <g filter="url(#filter9_d_175_2131)">
+        <rect x="354" y="591" width="8" height="8" rx="4" fill="white"></rect>
+    </g>
+    <defs>
+        <filter id="filter0_d_175_2131" x="0" y="51" width="218" height="94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <femorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_175_2131"></femorphology>
+            <feoffset dy="5"></feoffset>
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.504028 0 0 0 0 0.501389 0 0 0 0 0.633333 0 0 0 0.05 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter1_d_175_2131" x="415" y="11" width="192" height="94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <femorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_175_2131"></femorphology>
+            <feoffset dy="5"></feoffset>
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.504028 0 0 0 0 0.501389 0 0 0 0 0.633333 0 0 0 0.05 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter2_d_175_2131" x="84" y="300" width="200" height="94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <femorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_175_2131"></femorphology>
+            <feoffset dy="5"></feoffset>
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.504028 0 0 0 0 0.501389 0 0 0 0 0.633333 0 0 0 0.05 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter3_d_175_2131" x="446" y="233" width="202" height="94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <femorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_175_2131"></femorphology>
+            <feoffset dy="5"></feoffset>
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.504028 0 0 0 0 0.501389 0 0 0 0 0.633333 0 0 0 0.05 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter4_d_175_2131" x="343" y="497" width="172" height="94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <femorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_175_2131"></femorphology>
+            <feoffset dy="5"></feoffset>
+            <fegaussianblur stdDeviation="6"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.504028 0 0 0 0 0.501389 0 0 0 0 0.633333 0 0 0 0.05 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter5_d_175_2131" x="195" y="145" width="14" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <feoffset dy="3"></feoffset>
+            <fegaussianblur stdDeviation="1.5"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.04265 0 0 0 0 0.00916667 0 0 0 0.06 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter6_d_175_2131" x="262" y="394" width="14" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <feoffset dy="3"></feoffset>
+            <fegaussianblur stdDeviation="1.5"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.04265 0 0 0 0 0.00916667 0 0 0 0.06 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter7_d_175_2131" x="462" y="331" width="14" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <feoffset dy="3"></feoffset>
+            <fegaussianblur stdDeviation="1.5"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.04265 0 0 0 0 0.00916667 0 0 0 0.06 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter8_d_175_2131" x="423" y="105" width="14" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <feoffset dy="3"></feoffset>
+            <fegaussianblur stdDeviation="1.5"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.04265 0 0 0 0 0.00916667 0 0 0 0.06 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+        <filter id="filter9_d_175_2131" x="351" y="591" width="14" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+            <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix>
+            <feoffset dy="3"></feoffset>
+            <fegaussianblur stdDeviation="1.5"></fegaussianblur>
+            <fecomposite in2="hardAlpha" operator="out"></fecomposite>
+            <fecolormatrix type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.04265 0 0 0 0 0.00916667 0 0 0 0.06 0"></fecolormatrix>
+            <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_175_2131"></feblend>
+            <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_175_2131" result="shape"></feblend>
+        </filter>
+    </defs>
+				</svg>
+			</div>
+					</div>
+	</div>
+	<div id="unite" class="d-none">
+		<div class="modal-custom-container unite active">
+    <div class="unite-bg background mr-3px mb-24px"></div>
+    <div class="text-center">
+        <h2 class="font-size-18 font-bold pb-14px">Сообщаем вам, что учетные записи на платформах, входящих в TNET: mymarket, myhome, myauto, myparts и livo, были объединены.
+        </h2>
+        <span class="font-size-14 text-light-black">Если вы были зарегистрированы на любой из этих 5 платформ, вы можете использовать ту же учетную запись на других.</span>
+    </div>
+
+    <div class="btn-container container-lg">
+        <button type="button" onclick="popup.close()" class="gradient-button w-100 border-0 my-22px text-white py-3 transition-all">OK</button>
+    </div>
+    <div class="helper d-flex text-center justify-content-center align-items-center text-gray-250 mb-lg-0 font-size-12">
+        Powered By
+        <a class="pl-2 d-flex align-items-center is-uppercase font-weight-bold font-size-8" href="https://tnet.ge/" target="_blank">
+            <div class="tnet logo mr-3px cursor-pointer"></div>
+            TNET
+        </a>
+    </div>
+</div>
+	</div>
+</div>
+<script type="text/javascript" src="./auth_page_files/ru.js"></script>
+<script type="text/javascript" src="./auth_page_files/tether.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/drop.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/tooltip.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/scripts.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/jalerts.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/plugins.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/popup.min.js"></script>
+<script type="text/javascript" src="./auth_page_files/user.min.js"></script></body></html>
