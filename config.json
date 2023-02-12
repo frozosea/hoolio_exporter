@@ -18,8 +18,8 @@
     "use_mockup": true
   },
   "myhome": {
-    "login": "mikekvfickjvnug@gmail.com",
-    "password": "DRHMTr8vqmEM8cg",
+    "login": "",
+    "password": "",
     "sleep_on_exception_seconds": 10,
     "retry_on_exception_repeat_number": 2,
     "use_mockup": false
