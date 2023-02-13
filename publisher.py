@@ -17,10 +17,12 @@ from entity import Property
 from config import Telegram as TelegramConfig
 from config import Facebook as FacebookConfig
 from config import Myhome as MyHomeConfig
+from config import Myhome as SsConfig
 from cron import ICronManager
 from logger import ILogger
 from task import IPublisherRetryOnExceptionTaskProvider
 from request import IMyHomeRequest
+from request import IBrowserRequest
 from repository import IProxyRepository
 from scrapper import IMyHomeScrapper
 from exception import *
@@ -49,7 +51,7 @@ class TelegramPublisher(IPublisher):
 
     @staticmethod
     def __generate_message(r: Property) -> str:
-        return f"""{r.description.ru} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
+        return f"""{r.description.ru}\nСостояние: {r.condition}\nГазифицирован: {"Да" if r.gas else "Нет"}\nОтопление: {r.heating if r.heating else "Нет"}\nГорячая вода: {r.hot_water if r.hot_water else "Нет"} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
 
     async def publish(self, property: Property) -> None:
         if len(property.images):
@@ -133,7 +135,7 @@ class FacebookPublisher(IPublisher):
 
     @staticmethod
     def __generate_message(r: Property) -> str:
-        return f"""{r.description.ru} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
+        return f"""{r.description.ru}\nСостояние: {r.condition}\nГазифицирован: {"Да" if r.gas else "Нет"}\nОтопление: {r.heating if r.heating else "Нет"}\nГорячая вода: {r.hot_water if r.hot_water else "Нет"} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
 
     async def publish(self, property: Property) -> None:
         for group in self.__groups:
@@ -181,7 +183,7 @@ class MyHomePublisher(IPublisher):
         }[propery_type.lower()]
 
     @staticmethod
-    def __get_operation_type(operation_type: str) -> str:
+    def __get_transaction_type(operation_type: str) -> str:
         return {
             "продажа": "1",
             "аренда": "2",
@@ -392,14 +394,14 @@ class MyHomePublisher(IPublisher):
         hood_obj = self.__get_hood(property.location.city, property.location.hood)
         data = {
             "ProductTypeID": self.__get_property_type(property.type),
-            "AdTypeID": self.__get_operation_type(property.operation_type),
+            "AdTypeID": self.__get_transaction_type(property.transaction_type),
             "estate_type_id": self.__get_building_type(property.building.type),
             "HouseDelivery": property.building.house_delivery,
             "ConditionID": self.__get_flat_condition(property.condition),
             "ProjectID": "1",
             "CeilingHeight": property.building.ceiling_height,
             "Keyword": self.__get_full_address(property.location.city, property.location.hood),
-            "StreetAddr": property.location.address,
+            "StreetAddr": property.location.house_number + ", " + property.location.address,
             "OsmID": hood_obj["id"],
             "MapLat": hood_obj["coordinates"]["lat"],
             "MapLon": hood_obj["coordinates"]["lon"],
@@ -482,6 +484,148 @@ class MyHomePublisher(IPublisher):
             )
 
 
+class SSPublsher(IPublisher):
+    def __init__(self, config: SsConfig, proxy_repository: Type[IProxyRepository], browser: Type[IBrowserRequest],
+                 cron: Type[ICronManager], logger: Type[ILogger],
+                 task_provider: Type[IPublisherRetryOnExceptionTaskProvider]):
+        self.name = "ss"
+        self.__config = config
+        self.__proxy_repository = proxy_repository
+        self.__browser = browser
+        self.__cron = cron
+        self.__logger = logger
+        self.__task_provider = task_provider
+
+    @staticmethod
+    def __get_property_type_selector(p_type: str) -> str:
+        return {
+            "квартира": "#RealEstateTypeId_5",
+            "дом": "#RealEstateTypeId_4",
+            "коммерческая недвижимость": "#RealEstateTypeId_6",
+            "земля": "#RealEstateTypeId_3",
+            "отель": "#RealEstateTypeId_2"
+        }[p_type.lower()]
+
+    @staticmethod
+    def __get_transaction_type_selector(o_type: str) -> str:
+        return {
+            "продажа": "#RealEstateDealTypeId_4",
+            "аренда": "#RealEstateDealTypeId_1",
+            "ипотека": "#RealEstateDealTypeId_2",
+            "аренда посуточно": "#RealEstateDealTypeId_3"
+        }[o_type.lower()]
+
+    @staticmethod
+    def __get_city_selector(city: str) -> str:
+        return {
+            'тбилиси': '#bs-select-1-0',
+            'батуми': '#bs-select-1-1',
+            'кутаиси': '#bs-select-1-2'
+        }[city.lower()]
+
+    @staticmethod
+    def __get_rooms_quantity_selector(rooms: str):
+        return {
+            "1": "#room-1",
+            "2": "#room-2",
+            "3": "#room-3",
+            "4": "#room-4",
+            "5": "#room-5",
+            "6": "#room-6",
+            "7": "#room-7",
+            "8": "#room-8",
+            "9": "#room-9",
+        }[str(rooms)]
+
+    @staticmethod
+    def __get_balcony_selector(b: bool) -> str:
+        return {
+            True: "#create-edit-realestate-form > div.center-content > div.create-edit-inputs-container > div.create-edit-dynamic-fileds > div.section-row.application-main-fields > div:nth-child(57) > div > div > div:nth-child(1) > label",
+            False: "#create-edit-realestate-form > div.center-content > div.create-edit-inputs-container > div.create-edit-dynamic-fileds > div.section-row.application-main-fields > div:nth-child(57) > div > div > div:nth-child(6) > label"
+        }[b]
+
+    @staticmethod
+    def __get_toilet_quantity_selector(t: str) -> str:
+        return {
+            "1": "#rad1_418",
+            "2": "#rad1_419",
+            "3": "#rad1_420",
+            "4": "#rad1_421",
+            "5": "#rad1_422",
+        }[str(t)]
+
+    @staticmethod
+    def __get_building_type(b_type: str) -> str:
+        return {
+            "новая постройка": "#rad1_2",
+            "старая постройка": "#rad1_453",
+            "в процесса строительства": "#rad1_3"
+        }[b_type.lower()]
+
+    @staticmethod
+    def __get_condition_selector(c: str) -> str:
+        return {
+            "недавно отремонтированный": "#rad1_16",
+            "текущий ремонт": "#rad1_11",
+            "белый каркас": "#rad1_9",
+            "черный каркас": "#rad1_8",
+            "зеленый каркас": "#rad1_35"
+        }[c.lower()]
+
+    @staticmethod
+    def __get_gas_condition(gas: bool) -> str:
+        return "true" if gas else "false"
+
+    @staticmethod
+    def __get_heating_condition(heating: str) -> str:
+        return "true" if heating else "false"
+
+    def __get_script(self, property: Property) -> str:
+        return open("ss_script.js", "r").read() % (
+            str(self.__config.email),
+            str(self.__config.password),
+            str(self.__get_property_type_selector(property.type)),
+            str(self.__get_transaction_type_selector(property.transaction_type)),
+            str(self.__get_city_selector(property.location.city)),
+            str(property.location.address),
+            str(property.location.house_number),
+            str(property.rooms.rooms),
+            str(property.rooms.bedrooms),
+            str(property.area),
+            str(property.floor),
+            str(property.floors),
+            str(self.__get_balcony_selector(property.rooms.balcony)),
+            str(self.__get_toilet_quantity_selector(property.rooms.bathrooms)),
+            str(self.__get_building_type(property.building.type)),
+            str(self.__get_condition_selector(property.condition)),
+            str(self.__get_heating_condition(property.heating)),
+            str(self.__get_gas_condition(property.gas)),
+            str(property.description.ge),
+            str(property.description.en),
+            str(property.description.ru),
+            property.images,
+            str(int(property.usd_price)),
+        )
+
+    async def publish(self, property: Property) -> None:
+        script = self.__get_script(property)
+        try:
+            await self.__browser.send(script, self.__proxy_repository.get())
+        except Exception as e:
+            self.__logger.error(str(e))
+            self.__cron.add(
+                property.url + self.name,
+                fn=self.__task_provider.get_task(self.__browser.send,
+                                                 self.__config.retry_on_exception_repeat_number,
+                                                 self.__logger,
+                                                 self.__config.sleep_on_exception_seconds,
+                                                 script=script,
+                                                 proxy=self.__proxy_repository.get()),
+                trigger='date',
+                run_date=datetime.datetime.now() + datetime.timedelta(minutes=15)
+            )
+
+
 class MainPublisher:
     def __init__(self, publishers: List[Type[IPublisher]], logger: Type[ILogger]):
         self.__publishers = [{"name": p.name, "publisher": p} for p in publishers]
@@ -489,8 +633,9 @@ class MainPublisher:
 
     async def add(self, property: Property) -> None:
         for publisher in self.__publishers:
-            try:
-                await publisher.get("publisher").publish(property)
-            except Exception as e:
-                self.__logger.error(f"publish with name: {publisher.get('name')} error: {str(e)}")
-                continue
+            await publisher.get("publisher").publish(property)
+            # try:
+            #     await publisher.get("publisher").publish(property)
+            # except Exception as e:
+            #     self.__logger.error(f"publish with name: {publisher.get('name')} error: {str(e)}")
+            #     continue

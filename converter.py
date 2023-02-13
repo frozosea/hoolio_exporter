@@ -8,6 +8,10 @@ class ITelegramMessageConverter(ABC):
     def convert_message_to_raw_property_object(self, message: str) -> Property:
         ...
 
+    @abstractmethod
+    def get_address_and_house_number(self, message: str, property: Property) -> (str, str):
+        ...
+
 
 class TelegramMessageConverter(ITelegramMessageConverter):
     @staticmethod
@@ -22,6 +26,14 @@ class TelegramMessageConverter(ITelegramMessageConverter):
             property.building.type = value
         elif key == 'состояние':
             property.condition = value
+        elif key == 'город':
+            property.location.city = value
+        elif key == 'район':
+            property.location.hood = value
+        elif key == 'адрес':
+            property.location.address = value
+        elif key == 'номер дома':
+            property.location.house_number = value
         elif key == 'дата сдачи дома':
             property.building.house_delivery = value
         elif key == 'высота потолка':
@@ -67,3 +79,7 @@ class TelegramMessageConverter(ITelegramMessageConverter):
         for key, value in d.items():
             self.__convert_field(key, value, property)
         return property
+
+    def get_address_and_house_number(self, message: str, property: Property) -> (str, str):
+        d = {item.split(":")[0].lower().strip(): item.split(":")[1].lower().strip() for item in message.split("\n")}
+        return d["адрес"], d["номер дома"]

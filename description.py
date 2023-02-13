@@ -43,8 +43,9 @@ class DescriptionGenerator(IDescriptionGenerator):
 
     @staticmethod
     def __generate_request(property: Property) -> str:
-        return f"write sales description to property object with {property.rooms.bedrooms} bedrooms and {property.rooms.living_room} living room, area is 55m, located in good hood, good infrastructure in the hood,sunny side, address is {property.location.address}"
+        return f"write sales description to property object with {property.rooms.bedrooms} bedrooms and {property.rooms.living_room} living room, area is {property.area}m, located in good hood, good infrastructure in the hood,sunny side, address is {property.location.address}"
 
     async def generate(self, property: Property) -> Description:
         en_description = self.__request.send(self.__generate_request(property))
+        en_description += f"\nPhone number: {property.agent.phone_number}, {property.agent.name}"
         return self.__translate.translate(en_description)

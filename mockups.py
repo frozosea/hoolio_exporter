@@ -91,10 +91,10 @@ class TelegramMessageConverterMockUp(ITelegramMessageConverter):
         logger.debug("TELEGRAM MESSAGE CONVERTER MOCKUP")
         return Property(url='https://www.example.com/',
                         images=["mockup_data/apartment_1.jpg", "mockup_data/apartment_2.jpg",
-                                "mockup_data/apartment_3.jpg"], type='квартира', operation_type='продажа',
+                                "mockup_data/apartment_3.jpg"], type='квартира', transaction_type='продажа',
                         building=Building(type='новая постройка', ceiling_height='3', house_delivery='12/2022'),
                         condition='черный каркас', usd_price=float('70000'),
-                        location=Location(city='батуми', hood='старый батуми район', address='2 тупик ангиса,18'),
+                        location=Location(city='батуми', hood='старый батуми район', address='2 тупик ангиса',house_number="15"),
                         rooms=Rooms(rooms='3', bedrooms='2', bathrooms='2', living_room='1', living_room_m2='15',
                                     balcony=True, balcony_area='10'), gas=True, floor='10', floors='17',
                         optionally=None,
@@ -104,6 +104,9 @@ class TelegramMessageConverterMockUp(ITelegramMessageConverter):
                         information=[], agent=Agent(telegram_id='1', telegram_nickname='Dizolo', name='Ivan',
                                                     phone_number='568654121'),
                         source='myhome')
+
+    def get_address_and_house_number(self, message: str, property: Property) -> (str, str):
+        return "2 тупик ангиса","15"
 
 
 class TransportMockUp(ITransport):

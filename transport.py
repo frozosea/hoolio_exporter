@@ -1,4 +1,5 @@
 import datetime
+import os.path
 import random
 from abc import ABC
 from typing import Type
@@ -28,6 +29,7 @@ class AddProperty(StatesGroup):
     validate_base_description = State()
     waiting_images = State()
     waiting_neighbor_hood = State()
+    waiting_address = State()
     check_data = State()
     waiting_confirm = State()
 
@@ -101,6 +103,7 @@ class Telegram(ITransport):
         if not self.__validator.validate_add_new_property_message(message.text.lower()):
             await message.reply(
                 "Введите описание в правильном формает, как указано выше! Бот не может обработать Ваш запрос!")
+            await state.set_state(AddProperty.validate_base_description.state)
             return
         await state.update_data(base_data=message.text.lower())
         await message.reply(
@@ -110,12 +113,14 @@ class Telegram(ITransport):
     async def images_sent(self, message: types.Message, state: FSMContext):
         if not len(message.photo):
             await message.reply("Отправьте фотографии квартиры!")
+            await state.set_state(AddProperty.waiting_images.state)
             return
         for photo in message.photo:
             filename = f"{str(datetime.datetime.now().timestamp())}_{str(random.Random.randint(1, 100000))}_{self.__get_agent_name_by_id(message.from_user.id)}.jpg"
             await self.__bot.download_file_by_id(photo.file_id,
                                                  destination=f"photos/{filename}")
-            await state.update_data(photos=await state.get_data()["photos"].append(filename))
+            await state.update_data(
+                photos=await state.get_data()["photos"].append(os.path.abspath(f"photos/{filename}")))
         await message.reply("Фотографии были получены. Выберите район, где находится объект, используя кнопки ниже",
                             reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add(
                                 *self.__repository.get_neighborhoods(self.__config.city)))
@@ -127,8 +132,21 @@ class Telegram(ITransport):
             await message.reply("Пожалуйста, выберите район используя кнопки!",
                                 reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add(
                                     *neighborhoods))
+            await state.set_state(AddProperty.waiting_neighbor_hood.state)
             return
         await state.update_data(hood=message.text.lower())
+        await message.reply(
+            "Введите, пожалуйста, сообщение следующего вида: \nАдрес: 2 переулок ангиса\nНомер дома: 15")
+        await state.set_state(AddProperty.waiting_address.state)
+
+    async def get_address(self, message: types.Message, state: FSMContext):
+        m = message.text.lower()
+        if not self.__validator.validate_address_message(m):
+            await message.reply("Введите сообщение в правильном формате!")
+            await state.set_state(AddProperty.waiting_address.state)
+            return
+        address, house_number = self.__converter.get_address_and_house_number(m)
+        await state.update_data(address=address, house_number=house_number)
         await state.set_state(AddProperty.check_data.state)
 
     async def check_user_data_correct(self, message: types.Message, state: FSMContext):
@@ -140,6 +158,11 @@ class Telegram(ITransport):
 
         media = types.MediaGroup()
         index = 0
+        base_info = data["base_data"]
+        base_info += f"Город: {self.__config.city}"
+        base_info += f"Район: {data['hood']}"
+        base_info += f"Адрес: {data['address']}"
+        base_info += f"Номер дома: {data['house_number']}"
         while not index == 9:
             media.attach_photo(data["photos"][index], caption=data["base_data"] if index == 0 else "")
             index += 1

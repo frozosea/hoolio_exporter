@@ -22,14 +22,14 @@
     "password": "",
     "sleep_on_exception_seconds": 10,
     "retry_on_exception_repeat_number": 2,
-    "use_mockup": false
+    "use_mockup": true
   },
   "ss": {
-    "login": "",
+    "email": "",
     "password": "",
     "sleep_on_exception_seconds": 1,
     "retry_on_exception_repeat_number": 2,
-    "use_mockup": true
+    "use_mockup": false
   },
   "agent_network": [
     {
@@ -56,6 +56,9 @@
     "description_generator_use_mockup": true,
     "proxy_repository_use_mockup": true,
     "property_repository_use_mockup": false,
-    "transport_use_mockup": true
+    "transport_use_mockup": true,
+    "browser_url": "",
+    "browser_password": "",
+    "machine_ip": ""
   }
 }

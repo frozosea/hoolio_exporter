@@ -8,6 +8,8 @@ from request import ChatGPTRequest
 from description import IDescriptionGenerator
 from description import ChatGPTTranslate
 from description import DescriptionGenerator
+from request import IBrowserRequest
+from request import BrowserRequest
 from request import MyhomeRequest
 from scrapper import MyHomeScrapper
 from logger import ILogger
@@ -23,6 +25,7 @@ from publisher import IPublisher
 from publisher import TelegramPublisher
 from publisher import FacebookPublisher
 from publisher import MyHomePublisher
+from publisher import SSPublsher
 from publisher import MainPublisher
 from service import Service
 from mockups import ProxyRepositoryMockUp
@@ -45,6 +48,7 @@ class Builder:
     _location_repository: Type[ILocationRepository]
     _property_repository: Type[IPropertyRepository]
     _description_generator: Type[IDescriptionGenerator]
+    _browser_request: Type[IBrowserRequest]
     _telegram_publisher: IPublisher
     _facebook_publisher: IPublisher
     _myhome_publisher: IPublisher
@@ -96,6 +100,13 @@ class Builder:
                 ChatGPTTranslate(request)
             )
 
+    def __configure_browser_request(self):
+        self._browser_request = BrowserRequest(
+            self.__config.builder_config.browser_url,
+            self.__config.builder_config.browser_password,
+            self.__config.builder_config.machine_ip,
+        )
+
     def __configure_telegram_publisher(self):
         if self.__config.telegram.use_mockup:
             self._telegram_publisher = PublisherMockUp("telegram")
@@ -139,8 +150,14 @@ class Builder:
         if self.__config.ss.use_mockup:
             self._ss_publisher = PublisherMockUp("ss")
         else:
-            pass
-            # TODO add SS.GE publisher and configure it
+            self._ss_publisher = SSPublsher(
+                self.__config.ss,
+                self._proxy_repository,
+                self._browser_request,
+                self._cron,
+                self.__configure_logger_by_dir_name("ss_publisher"),
+                self._task_provider_for_publisher
+            )
         self._publishers.append(self._ss_publisher)
 
     def __configure_main_publisher(self):
@@ -177,6 +194,7 @@ class Builder:
         self._configure_task_provider_for_publisher()
         self.__configure_repositories()
         self.__configure_description_generator()
+        self.__configure_browser_request()
         self.__configure_telegram_publisher()
         self.__configure_facebook_publisher()
         self.__configure_myhome_publisher()

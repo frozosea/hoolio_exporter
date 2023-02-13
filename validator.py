@@ -7,7 +7,9 @@ class IValidator(ABC):
     @abstractmethod
     def validate_add_new_property_message(self, message: str) -> bool:
         ...
-
+    @abstractmethod
+    def validate_address_message(self, message: str) -> bool:
+        ...
 
 class Validator(IValidator):
     @staticmethod
@@ -69,5 +71,13 @@ class Validator(IValidator):
         if not len(re.findall(r"\d{1,2}\/\d{1,2}", d["этаж"])):
             return False
         if not d["ссылка"]:
+            return False
+        return True
+
+    def validate_address_message(self, message: str) -> bool:
+        d = {item.split(":")[0].lower().strip(): item.split(":")[1].lower().strip() for item in message.split("\n")}
+        if not d["адрес"]:
+            return False
+        elif not d["номер дома"].isdigit():
             return False
         return True

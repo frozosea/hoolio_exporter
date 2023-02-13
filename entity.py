@@ -60,6 +60,7 @@ class Location:
     city: str
     hood: str
     address: str
+    house_number: str
 
 
 @dataclass()
@@ -67,7 +68,7 @@ class Property:
     url: str
     images: List[str]
     type: str
-    operation_type: str
+    transaction_type: str
     building: Building
     condition: str
     usd_price: float

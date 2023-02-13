@@ -26,12 +26,12 @@ class Service(IService):
         self.__description_generator = description_generator
 
     async def publish(self, property: Property) -> None:
+        property.description = await self.__description_generator.generate(property)
         try:
             property.description = await self.__description_generator.generate(property)
         except Exception as e:
             self.__logger.error(f"generate description for property: {property.url} error: {str(e)}")
             raise e
-        await self.__publisher.add(property)
         try:
             await self.__publisher.add(property)
             self.__logger.info(f"property: {property.url} was published to all source")

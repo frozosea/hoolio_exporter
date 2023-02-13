@@ -84,7 +84,7 @@ class PropertyRepository(IPropertyRepository):
             (
                 property.url,
                 property.type,
-                property.operation_type,
+                property.transaction_type,
                 property.building.type,
                 property.condition,
                 float(property.usd_price),
