@@ -9,7 +9,7 @@ class ITelegramMessageConverter(ABC):
         ...
 
     @abstractmethod
-    def get_address_and_house_number(self, message: str, property: Property) -> (str, str):
+    def get_address_and_house_number(self, message: str) -> (str, str):
         ...
 
 
@@ -80,6 +80,6 @@ class TelegramMessageConverter(ITelegramMessageConverter):
             self.__convert_field(key, value, property)
         return property
 
-    def get_address_and_house_number(self, message: str, property: Property) -> (str, str):
+    def get_address_and_house_number(self, message: str) -> (str, str):
         d = {item.split(":")[0].lower().strip(): item.split(":")[1].lower().strip() for item in message.split("\n")}
         return d["адрес"], d["номер дома"]

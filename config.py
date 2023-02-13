@@ -4,7 +4,7 @@
 #
 # and then, to convert JSON from a string, do
 #
-#     result = welcome10_from_dict(json.loads(json_string))
+#     result = welcome3_from_dict(json.loads(json_string))
 
 from typing import Any, List, Optional, TypeVar, Callable, Type, cast
 
@@ -114,7 +114,7 @@ class AgentNetwork:
 class BuilderConfig:
     base_logs_dir_name: str
     upload_images_app_url: str
-    proxies: List[Any]
+    proxies: List[str]
     chat_gpt_api_key: str
     telegram_bot_token: str
     cron_use_mockup: bool
@@ -126,7 +126,7 @@ class BuilderConfig:
     browser_password: str
     machine_ip: str
 
-    def __init__(self, base_logs_dir_name: str, upload_images_app_url: str, proxies: List[Any], chat_gpt_api_key: str, telegram_bot_token: str, cron_use_mockup: bool, description_generator_use_mockup: bool, proxy_repository_use_mockup: bool, property_repository_use_mockup: bool, transport_use_mockup: bool, browser_url: str, browser_password: str, machine_ip: str) -> None:
+    def __init__(self, base_logs_dir_name: str, upload_images_app_url: str, proxies: List[str], chat_gpt_api_key: str, telegram_bot_token: str, cron_use_mockup: bool, description_generator_use_mockup: bool, proxy_repository_use_mockup: bool, property_repository_use_mockup: bool, transport_use_mockup: bool, browser_url: str, browser_password: str, machine_ip: str) -> None:
         self.base_logs_dir_name = base_logs_dir_name
         self.upload_images_app_url = upload_images_app_url
         self.proxies = proxies
@@ -146,7 +146,7 @@ class BuilderConfig:
         assert isinstance(obj, dict)
         base_logs_dir_name = from_str(obj.get("base_logs_dir_name"))
         upload_images_app_url = from_str(obj.get("upload_images_app_url"))
-        proxies = from_list(lambda x: x, obj.get("proxies"))
+        proxies = from_list(from_str, obj.get("proxies"))
         chat_gpt_api_key = from_str(obj.get("chat_gpt_api_key"))
         telegram_bot_token = from_str(obj.get("telegram_bot_token"))
         cron_use_mockup = from_bool(obj.get("cron_use_mockup"))
@@ -163,7 +163,7 @@ class BuilderConfig:
         result: dict = {}
         result["base_logs_dir_name"] = from_str(self.base_logs_dir_name)
         result["upload_images_app_url"] = from_str(self.upload_images_app_url)
-        result["proxies"] = from_list(lambda x: x, self.proxies)
+        result["proxies"] = from_list(from_str, self.proxies)
         result["chat_gpt_api_key"] = from_str(self.chat_gpt_api_key)
         result["telegram_bot_token"] = from_str(self.telegram_bot_token)
         result["cron_use_mockup"] = from_bool(self.cron_use_mockup)
@@ -304,10 +304,10 @@ class Config:
     facebook: Facebook
     myhome: Myhome
     ss: Myhome
-    agent_network: List[AgentNetwork]
+    agent_network: AgentNetwork
     builder_config: BuilderConfig
 
-    def __init__(self, telegram: Telegram, facebook: Facebook, myhome: Myhome, ss: Myhome, agent_network: List[AgentNetwork], builder_config: BuilderConfig) -> None:
+    def __init__(self, telegram: Telegram, facebook: Facebook, myhome: Myhome, ss: Myhome, agent_network: AgentNetwork, builder_config: BuilderConfig) -> None:
         self.telegram = telegram
         self.facebook = facebook
         self.myhome = myhome
@@ -322,7 +322,7 @@ class Config:
         facebook = Facebook.from_dict(obj.get("facebook"))
         myhome = Myhome.from_dict(obj.get("myhome"))
         ss = Myhome.from_dict(obj.get("ss"))
-        agent_network = from_list(AgentNetwork.from_dict, obj.get("agent_network"))
+        agent_network = AgentNetwork.from_dict(obj.get("agent_network"))
         builder_config = BuilderConfig.from_dict(obj.get("builder_config"))
         return Config(telegram, facebook, myhome, ss, agent_network, builder_config)
 
@@ -332,14 +332,8 @@ class Config:
         result["facebook"] = to_class(Facebook, self.facebook)
         result["myhome"] = to_class(Myhome, self.myhome)
         result["ss"] = to_class(Myhome, self.ss)
-        result["agent_network"] = from_list(lambda x: to_class(AgentNetwork, x), self.agent_network)
+        result["agent_network"] = to_class(AgentNetwork, self.agent_network)
         result["builder_config"] = to_class(BuilderConfig, self.builder_config)
         return result
 
 
-def welcome10_from_dict(s: Any) -> Config:
-    return Config.from_dict(s)
-
-
-def welcome10_to_dict(x: Config) -> Any:
-    return to_class(Config, x)

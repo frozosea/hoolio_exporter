@@ -87,8 +87,7 @@ class Builder:
             self._property_repository = PropertyRepositoryMockUp()
         else:
             self._property_repository = PropertyRepository().migrate()
-            for network in self.__config.agent_network:
-                self._property_repository.seed_data(network.agents)
+            self._property_repository.seed_data(self.__config.agent_network.agents)
 
     def __configure_description_generator(self):
         if self.__config.builder_config.description_generator_use_mockup:

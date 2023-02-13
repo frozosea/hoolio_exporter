@@ -90,6 +90,6 @@ class Property:
 
     @staticmethod
     def init_empty() -> 'Property':
-        return Property("", [], '', '', Building('', '', ''), '', 0, Location('', '', ''),
+        return Property("", [], '', '', Building('', '', ''), '', 0, Location('', '', '',''),
                         Rooms('', '', '', '', '', False, ''), False, '', '', None, Description('', '', ''), '', False,
                         '', '', '', [], Agent('', '', '',''), '')
