@@ -104,7 +104,7 @@ class PropertyRepository(IPropertyRepository):
         self.__con.commit()
 
     def __get_agent_id_by_telegram_id(self, telegram_id: str):
-        return self.__con.cursor().execute("SELECT id FROM Agent AS agent WHERE agent.telegram_id = ?",
+        return self.__con.cursor().execute("SELECT id FROM Agent AS agent WHERE telegram_id = ?",
                                            (telegram_id,)).fetchone()[0]
 
     def get_by_agent(self, telegram_id: str) -> List[Property]:
@@ -112,7 +112,6 @@ class PropertyRepository(IPropertyRepository):
                                           telegram_id).fetchall()
         array = []
         for item in raw:
-            print()
             array.append(Property(item[1], [], item[2], item[3], item[4], item[5], item[6],
                                   Location(city=item[7], address=item[8]),
                                   Rooms(bedrooms=item[9], living_room=item[10]), item[12], "0", "0", None,
