@@ -59,7 +59,6 @@ class PropertyRepository(IPropertyRepository):
         return self
 
     def add(self, property: Property) -> None:
-
         self.__con.cursor().execute(
             """INSERT INTO Property(
             url, 
@@ -104,8 +103,9 @@ class PropertyRepository(IPropertyRepository):
         self.__con.commit()
 
     def __get_agent_id_by_telegram_id(self, telegram_id: str):
-        return self.__con.cursor().execute("SELECT id FROM Agent AS agent WHERE telegram_id = ?",
-                                           (telegram_id,)).fetchone()[0]
+        print(self.__con.cursor().execute("SELECT * FROM Agent").fetchall())
+        return self.__con.cursor().execute("SELECT * FROM Agent AS agent WHERE telegram_id = ?",
+                                           (telegram_id,)).fetchone()[0][0]
 
     def get_by_agent(self, telegram_id: str) -> List[Property]:
         raw = self.__con.cursor().execute("SELECT * FROM Property LEFT JOIN Agent AS agent ON agent.telegram_id = ?",

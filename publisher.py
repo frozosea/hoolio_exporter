@@ -114,9 +114,9 @@ class FacebookPublisher(IPublisher):
         data = {
             "published": False
         }
-        async with aiohttp.ClientSession() as session:
+        async with httpx.AsyncClient() as session:
             response = await session.post(url, files=files, data=data)
-        return await response.json()
+        return response.json()
 
     async def __multiply_post(self, group_id: int | str, images: List[str], message: str, auth_token: str):
         imgs_id = []
@@ -130,7 +130,7 @@ class FacebookPublisher(IPublisher):
             key = "attached_media[" + str(imgs_id.index(img_id)) + "]"
             args[key] = "{'media_fbid': '" + img_id + "'}"
         url = f"https://graph.facebook.com/{group_id}/feed?access_token=" + auth_token
-        async with aiohttp.ClientSession() as session:
+        async with httpx.AsyncClient() as session:
             await session.post(url, data=args)
 
     @staticmethod
@@ -584,27 +584,6 @@ class SSPublsher(IPublisher):
         return open("ss_script.js", "r").read() % (
             str(self.__config.email),
             str(self.__config.password),
-            str(self.__get_property_type_selector(property.type)),
-            str(self.__get_transaction_type_selector(property.transaction_type)),
-            str(self.__get_city_selector(property.location.city)),
-            str(property.location.address),
-            str(property.location.house_number),
-            str(property.rooms.rooms),
-            str(property.rooms.bedrooms),
-            str(property.area),
-            str(property.floor),
-            str(property.floors),
-            str(self.__get_balcony_selector(property.rooms.balcony)),
-            str(self.__get_toilet_quantity_selector(property.rooms.bathrooms)),
-            str(self.__get_building_type(property.building.type)),
-            str(self.__get_condition_selector(property.condition)),
-            str(self.__get_heating_condition(property.heating)),
-            str(self.__get_gas_condition(property.gas)),
-            str(property.description.ge),
-            str(property.description.en),
-            str(property.description.ru),
-            property.images,
-            str(int(property.usd_price)),
         )
 
     async def publish(self, property: Property) -> None:
