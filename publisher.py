@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import asyncio
 import datetime
-
+import threading
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 import aiohttp
 import time
 from typing import List
@@ -23,6 +26,8 @@ from logger import ILogger
 from task import IPublisherRetryOnExceptionTaskProvider
 from request import IMyHomeRequest
 from request import IBrowserRequest
+from request import IFacebookRequest
+from entity import FacebookPost
 from repository import IProxyRepository
 from scrapper import IMyHomeScrapper
 from exception import *
@@ -47,19 +52,19 @@ class TelegramPublisher(IPublisher):
         self.__task_provider = task_provider
         self.__cron = cron
         self.__client = TelegramClient('publisher', int(self.__config.api_id), self.__config.api_hash)
-        self.__client.start()
 
     @staticmethod
     def __generate_message(r: Property) -> str:
         return f"""{r.description.ru}\nСостояние: {r.condition}\nГазифицирован: {"Да" if r.gas else "Нет"}\nОтопление: {r.heating if r.heating else "Нет"}\nГорячая вода: {r.hot_water if r.hot_water else "Нет"} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
 
     async def publish(self, property: Property) -> None:
+        await self.__client.start()
         if len(property.images):
             for group in self.__config.groups:
                 try:
                     await self.__client.send_file(group, property.images[:10],
                                                   caption=self.__generate_message(property))
-                    time.sleep(10)
+                    await asyncio.sleep(10)
                 except Exception as e:
                     self.__logger.error(str(e))
                     self.__cron.add(task_id=property.url + self.name + str(group),
@@ -76,7 +81,7 @@ class TelegramPublisher(IPublisher):
             for group in self.__config.groups:
                 try:
                     await self.__client.send_message(group, self.__generate_message(property))
-                    time.sleep(10)
+                    await asyncio.sleep(10)
                 except Exception as e:
                     self.__logger.error(str(e))
                     self.__cron.add(task_id=property.url + self.name + str(group),
@@ -88,16 +93,17 @@ class TelegramPublisher(IPublisher):
                                                                      message=self.__generate_message(property)),
                                     trigger='date', run_date=datetime.datetime.now() + datetime.timedelta(minutes=5))
                     time.sleep(self.__sleep_on_exception)
+        await self.__client.disconnect()
 
 
 class FacebookPublisher(IPublisher):
-    def __init__(self, config: FacebookConfig, logger: Type[ILogger],
+    def __init__(self, config: FacebookConfig, logger: Type[ILogger], request: Type[IFacebookRequest],
                  task_provider: Type[IPublisherRetryOnExceptionTaskProvider], cron: Type[ICronManager]):
         self.name = "facebook"
         self.__groups = config.groups
-        self.__app_id = config.app_id
-        self.__app_secret = config.app_secret
-        self.__access_token = config.access_token
+        self.__email = config.email
+        self.__request = request
+        self.__password = config.password
         self.__sleep_on_exception = config.sleep_on_exception_seconds
         self.__retry_on_exception_number = config.retry_on_exception_repeat_number
         self.__logger = logger
@@ -105,61 +111,45 @@ class FacebookPublisher(IPublisher):
         self.__task_provider = task_provider
 
     @staticmethod
-    async def __post_image(group_id: str, img, auth_token: str):
-        url = f"https://graph.facebook.com/{group_id}/photos?access_token=" + auth_token
-
-        files = {
-            'file': open(img, 'rb'),
-        }
-        data = {
-            "published": False
-        }
-        async with httpx.AsyncClient() as session:
-            response = await session.post(url, files=files, data=data)
-        return response.json()
-
-    async def __multiply_post(self, group_id: int | str, images: List[str], message: str, auth_token: str):
-        imgs_id = []
-        for img in images:
-            post_id = await self.__post_image(group_id, img, auth_token)
-            imgs_id.append(post_id['id'])
-
-        args = dict()
-        args["message"] = message
-        for img_id in imgs_id:
-            key = "attached_media[" + str(imgs_id.index(img_id)) + "]"
-            args[key] = "{'media_fbid': '" + img_id + "'}"
-        url = f"https://graph.facebook.com/{group_id}/feed?access_token=" + auth_token
-        async with httpx.AsyncClient() as session:
-            await session.post(url, data=args)
-
-    @staticmethod
     def __generate_message(r: Property) -> str:
         return f"""{r.description.ru}\nСостояние: {r.condition}\nГазифицирован: {"Да" if r.gas else "Нет"}\nОтопление: {r.heating if r.heating else "Нет"}\nГорячая вода: {r.hot_water if r.hot_water else "Нет"} \n\nКонтакты для связи: \nTelegram: {r.agent.telegram_nickname} \nНомер телефона: {r.agent.phone_number}, {r.agent.name}"""
 
+    @staticmethod
+    def __generate_groups(groups: List[str]):
+        for index, group in enumerate(groups, 0):
+            if "https://mbasic.facebook.com/groups/" not in group:
+                groups[index] = "https://mbasic.facebook.com/groups/" + group
+        return groups
+
+    @staticmethod
+    async def __in_thread(func):
+        _executor = ThreadPoolExecutor(10)
+        loop = asyncio.get_running_loop()
+        return await loop.run_in_executor(_executor, func)
+
     async def publish(self, property: Property) -> None:
-        for group in self.__groups:
+        self.__request.auth()
+        for group in self.__generate_groups(self.__groups):
+            post = FacebookPost(self.__generate_message(property), property.images)
             try:
-                await self.__multiply_post(group, property.images[:10], self.__generate_message(property),
-                                           self.__access_token)
-                time.sleep(20)
+                await self.__in_thread(self.__request.upload_post(post, group))
             except Exception as e:
-                self.__logger.error(f"publish to group with id: {group} error: {str(e)}")
+                self.__logger.error(f"publish group: {group} error: {str(e)}")
                 time.sleep(self.__sleep_on_exception)
-                self.__cron.add(task_id=property.url + self.name + str(group),
-                                fn=self.__task_provider.get_task(fn=self.__multiply_post,
-                                                                 retry_number=self.__retry_on_exception_number,
-                                                                 logger=self.__logger,
-                                                                 sleep_on_exception=self.__sleep_on_exception,
-                                                                 group_id=group,
-                                                                 images=property.images[:10],
-                                                                 message=self.__generate_message(property),
-                                                                 auth_token=self.__access_token),
-                                trigger='date', run_date=datetime.datetime.now() + datetime.timedelta(minutes=5))
-                continue
+                self.__cron.add(task_id=property.url + self.name,
+                                fn=self.__task_provider.get_task(
+                                    fn=self.__in_thread(self.__request.upload_post(post, group)),
+                                    retry_number=self.__retry_on_exception_number,
+                                    logger=self.__logger,
+                                    sleep_on_exception=self.__sleep_on_exception,
+                                    post=post,
+                                    trigger='date',
+                                    run_date=datetime.datetime.now() + datetime.timedelta(
+                                        minutes=5)))
 
 
 class MyHomePublisher(IPublisher):
+
     def __init__(self, config: MyHomeConfig, logger: Type[ILogger], request: Type[IMyHomeRequest],
                  cron: Type[ICronManager], proxy_repository: Type[IProxyRepository],
                  task_provider: Type[IPublisherRetryOnExceptionTaskProvider], scrapper: Type[IMyHomeScrapper]):

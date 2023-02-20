@@ -9,7 +9,11 @@ import aiohttp
 import httpx
 import openai
 import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from aiohttp import ClientSession
+from entity import FacebookPost as Post
 
 
 class IBrowserRequest(ABC):
@@ -268,3 +272,79 @@ class ChatGPTRequest(IChatGPTRequest):
         response = completion.choices[0].text
         print(response)
         return response
+
+
+class IFacebookRequest(ABC):
+    @abstractmethod
+    def auth(self):
+        ...
+
+    @abstractmethod
+    def upload_post(self, post: Post, group: str):
+        ...
+
+
+class FacebookRequest(IFacebookRequest):
+    def __init__(self, login, password, driver_path="/usr/lib/chromium-browser/chromedriver"):
+        self.__login = login
+        self.__password = password
+        self.__driver_path = driver_path
+        self.__driver = self.__init_webdriver()
+
+    def auth(self):
+        self.__driver.get('https://mbasic.facebook.com/')
+        emailelement = self.__driver.find_element(By.CSS_SELECTOR, '#m_login_email')
+        emailelement.send_keys(self.__login)
+        passelement = self.__driver.find_element(By.CSS_SELECTOR, '#password_input_with_placeholder > input')
+        passelement.send_keys(self.__password)
+        loginelement = self.__driver.find_element(By.CSS_SELECTOR, '#login_form > ul > li:nth-child(3) > input')
+        loginelement.click()
+        try:
+            accept_button = self.__driver.find_element(By.CSS_SELECTOR,
+                                                       "#root > table > tbody > tr > td > div > form > div > input")
+            accept_button.click()
+        except:
+            pass
+
+    @staticmethod
+    def __upload_picture(driver, pics):
+        if len(pics) == 3:
+            for index, path in enumerate(pics, 1):
+                driver.find_element(By.NAME, f'file{index}').send_keys(path)
+            driver.implicitly_wait(5)
+            driver.find_element(By.NAME, 'add_photo_done').click()
+            driver.implicitly_wait(10)
+
+
+    @staticmethod
+    def __split(array, chunk_size):
+        return [array[i:i + chunk_size] for i in range(0, len(array), chunk_size)]
+
+    def upload_post(self, post: Post, group: str):
+        self.__driver.get(group)
+        self.__driver.implicitly_wait(10)
+        add_photo_in_group = self.__driver.find_element(By.XPATH,
+                                                        "/html/body/div[1]/div/div[2]/div/div[1]/div[2]/form/div/span/div[1]/table/tbody/tr/td[2]/input")
+        add_photo_in_group.click()
+        self.__driver.implicitly_wait(10)
+        for array in self.__split(post.images, 3):
+            self.__upload_picture(self.__driver, array)
+
+        self.__driver.find_element(By.NAME, 'xc_message').send_keys(post.message)
+
+        self.__driver.find_element(By.NAME, 'view_post').click()
+
+        self.__driver.implicitly_wait(20)
+
+    def __init_webdriver(self):
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {"profile.default_content_setting_values.notifications": 2}
+        chrome_options.add_experimental_option("prefs", prefs)
+        chrome_options.add_argument("start-maximize")
+        chrome_options.add_argument("disable-infobars")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.headless = True
+        return webdriver.Chrome(self.__driver_path, chrome_options=chrome_options)

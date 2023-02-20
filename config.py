@@ -4,7 +4,7 @@
 #
 # and then, to convert JSON from a string, do
 #
-#     result = welcome3_from_dict(json.loads(json_string))
+#     result = welcome4_from_dict(json.loads(json_string))
 
 from typing import Any, List, Optional, TypeVar, Callable, Type, cast
 
@@ -178,18 +178,16 @@ class BuilderConfig:
 
 
 class Facebook:
-    access_token: str
-    app_id: str
-    app_secret: str
-    groups: List[Any]
+    email: str
+    password: str
+    groups: List[str]
     sleep_on_exception_seconds: int
     retry_on_exception_repeat_number: int
     use_mockup: bool
 
-    def __init__(self, access_token: str, app_id: str, app_secret: str, groups: List[Any], sleep_on_exception_seconds: int, retry_on_exception_repeat_number: int, use_mockup: bool) -> None:
-        self.access_token = access_token
-        self.app_id = app_id
-        self.app_secret = app_secret
+    def __init__(self, email: str, password: str, groups: List[str], sleep_on_exception_seconds: int, retry_on_exception_repeat_number: int, use_mockup: bool) -> None:
+        self.email = email
+        self.password = password
         self.groups = groups
         self.sleep_on_exception_seconds = sleep_on_exception_seconds
         self.retry_on_exception_repeat_number = retry_on_exception_repeat_number
@@ -198,21 +196,19 @@ class Facebook:
     @staticmethod
     def from_dict(obj: Any) -> 'Facebook':
         assert isinstance(obj, dict)
-        access_token = from_str(obj.get("access_token"))
-        app_id = from_str(obj.get("app_id"))
-        app_secret = from_str(obj.get("app_secret"))
-        groups = from_list(lambda x: x, obj.get("groups"))
+        email = from_str(obj.get("email"))
+        password = from_str(obj.get("password"))
+        groups = from_list(from_str, obj.get("groups"))
         sleep_on_exception_seconds = from_int(obj.get("sleep_on_exception_seconds"))
         retry_on_exception_repeat_number = from_int(obj.get("retry_on_exception_repeat_number"))
         use_mockup = from_bool(obj.get("use_mockup"))
-        return Facebook(access_token, app_id, app_secret, groups, sleep_on_exception_seconds, retry_on_exception_repeat_number, use_mockup)
+        return Facebook(email, password, groups, sleep_on_exception_seconds, retry_on_exception_repeat_number, use_mockup)
 
     def to_dict(self) -> dict:
         result: dict = {}
-        result["access_token"] = from_str(self.access_token)
-        result["app_id"] = from_str(self.app_id)
-        result["app_secret"] = from_str(self.app_secret)
-        result["groups"] = from_list(lambda x: x, self.groups)
+        result["email"] = from_str(self.email)
+        result["password"] = from_str(self.password)
+        result["groups"] = from_list(from_str, self.groups)
         result["sleep_on_exception_seconds"] = from_int(self.sleep_on_exception_seconds)
         result["retry_on_exception_repeat_number"] = from_int(self.retry_on_exception_repeat_number)
         result["use_mockup"] = from_bool(self.use_mockup)
@@ -258,15 +254,15 @@ class Myhome:
 
 
 class Telegram:
-    api_id: str
+    api_id: int
     api_hash: str
     phone_number: str
-    groups: List[Any]
+    groups: List[int]
     sleep_on_exception_seconds: int
     retry_on_exception_repeat_number: int
     use_mockup: bool
 
-    def __init__(self, api_id: str, api_hash: str, phone_number: str, groups: List[Any], sleep_on_exception_seconds: int, retry_on_exception_repeat_number: int, use_mockup: bool) -> None:
+    def __init__(self, api_id: int, api_hash: str, phone_number: str, groups: List[int], sleep_on_exception_seconds: int, retry_on_exception_repeat_number: int, use_mockup: bool) -> None:
         self.api_id = api_id
         self.api_hash = api_hash
         self.phone_number = phone_number
@@ -278,10 +274,10 @@ class Telegram:
     @staticmethod
     def from_dict(obj: Any) -> 'Telegram':
         assert isinstance(obj, dict)
-        api_id = from_str(obj.get("api_id"))
+        api_id = int(from_str(obj.get("api_id")))
         api_hash = from_str(obj.get("api_hash"))
         phone_number = from_str(obj.get("phone_number"))
-        groups = from_list(lambda x: x, obj.get("groups"))
+        groups = from_list(from_int, obj.get("groups"))
         sleep_on_exception_seconds = from_int(obj.get("sleep_on_exception_seconds"))
         retry_on_exception_repeat_number = from_int(obj.get("retry_on_exception_repeat_number"))
         use_mockup = from_bool(obj.get("use_mockup"))
@@ -289,10 +285,10 @@ class Telegram:
 
     def to_dict(self) -> dict:
         result: dict = {}
-        result["api_id"] = from_str(self.api_id)
+        result["api_id"] = from_str(str(self.api_id))
         result["api_hash"] = from_str(self.api_hash)
         result["phone_number"] = from_str(self.phone_number)
-        result["groups"] = from_list(lambda x: x, self.groups)
+        result["groups"] = from_list(from_int, self.groups)
         result["sleep_on_exception_seconds"] = from_int(self.sleep_on_exception_seconds)
         result["retry_on_exception_repeat_number"] = from_int(self.retry_on_exception_repeat_number)
         result["use_mockup"] = from_bool(self.use_mockup)
@@ -335,5 +331,3 @@ class Config:
         result["agent_network"] = to_class(AgentNetwork, self.agent_network)
         result["builder_config"] = to_class(BuilderConfig, self.builder_config)
         return result
-
-
