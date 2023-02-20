@@ -11,6 +11,7 @@ from description import DescriptionGenerator
 from request import IBrowserRequest
 from request import BrowserRequest
 from request import MyhomeRequest
+from request import FacebookRequest
 from scrapper import MyHomeScrapper
 from logger import ILogger
 from logger import Logger as CustomLogger
@@ -125,6 +126,10 @@ class Builder:
             self._facebook_publisher = FacebookPublisher(
                 self.__config.facebook,
                 self.__configure_logger_by_dir_name("facebook_publisher"),
+                FacebookRequest(
+                    self.__config.facebook.email,
+                    self.__config.facebook.password
+                ),
                 self._task_provider_for_publisher,
                 self._cron
             )

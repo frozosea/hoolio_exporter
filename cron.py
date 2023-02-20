@@ -44,7 +44,6 @@ class CronManager(ICronManager):
 
     def add(self, task_id: any, fn: Callable, *args, **kwargs) -> Job:
         self.__manager.add_job(func=fn, id=str(task_id), replace_existing=False, jobstore="default", *args, **kwargs)
-        return
 
     def remove(self, task_id: any) -> None:
         self.__manager.remove_job(task_id)
