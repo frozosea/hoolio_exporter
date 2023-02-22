@@ -89,8 +89,9 @@ class TelegramPublisher(IPublisher):
                                                                      retry_number=self.__retry_on_exception_number,
                                                                      logger=self.__logger,
                                                                      sleep_on_exception=self.__sleep_on_exception,
-                                                                     entity=group,
-                                                                     message=self.__generate_message(property)),
+                                                                     kwargs={'entity': group,
+                                                                             'message': self.__generate_message(
+                                                                                 property)}),
                                     trigger='date', run_date=datetime.datetime.now() + datetime.timedelta(minutes=5))
                     time.sleep(self.__sleep_on_exception)
         await self.__client.disconnect()
@@ -142,7 +143,6 @@ class FacebookPublisher(IPublisher):
                                     retry_number=self.__retry_on_exception_number,
                                     logger=self.__logger,
                                     sleep_on_exception=self.__sleep_on_exception,
-                                    post=post,
                                     trigger='date',
                                     run_date=datetime.datetime.now() + datetime.timedelta(
                                         minutes=5)))
@@ -588,7 +588,7 @@ class SSPublsher(IPublisher):
                                                  self.__config.retry_on_exception_repeat_number,
                                                  self.__logger,
                                                  self.__config.sleep_on_exception_seconds,
-                                                 script=script,
+                                                 kwargs={'script':script},
                                                  proxy=self.__proxy_repository.get()),
                 trigger='date',
                 run_date=datetime.datetime.now() + datetime.timedelta(minutes=15)

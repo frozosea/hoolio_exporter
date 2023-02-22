@@ -315,7 +315,6 @@ class FacebookRequest(IFacebookRequest):
             driver.find_element(By.NAME, 'add_photo_done').click()
             driver.implicitly_wait(10)
 
-
     @staticmethod
     def __split(array, chunk_size):
         return [array[i:i + chunk_size] for i in range(0, len(array), chunk_size)]
@@ -335,6 +334,7 @@ class FacebookRequest(IFacebookRequest):
         self.__driver.find_element(By.NAME, 'view_post').click()
 
         self.__driver.implicitly_wait(20)
+        self.__driver.close()
 
     def __init_webdriver(self):
         chrome_options = webdriver.ChromeOptions()
