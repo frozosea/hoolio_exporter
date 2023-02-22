@@ -1,3 +1,4 @@
+import re
 from abc import ABC
 from abc import abstractmethod
 from typing import Type
@@ -21,9 +22,21 @@ class ChatGPTTranslate(ITranslate):
     def __generate_request_to_bot(en_text: str) -> (str, str):
         return f'translate this text in brackets "{en_text}" from english to russian and georgian, separate answer by semicolon'
 
+    @staticmethod
+    def __remove_under_symbol(s, symbol):
+        t = ""
+        if symbol in s:
+            for item in s.split(";"):
+                t += item.split(":")[1]
+                t += ";"
+            return t.strip()
+        return s
+
     def translate(self, en_text: str) -> Description:
         response = self.__request.send(self.__generate_request_to_bot(
             en_text))  # English: I love cats and dogs; Georgian: მე ვეფხისტყაოს და ცხოვრებთან მოგაწვევით.
+        if ":" in response:
+            response = self.__remove_under_symbol(response, ":")
         split = response.split(";")
         ru_version = split[0]
         ge_version = split[1]
@@ -47,5 +60,5 @@ class DescriptionGenerator(IDescriptionGenerator):
 
     async def generate(self, property: Property) -> Description:
         en_description = self.__request.send(self.__generate_request(property))
-        en_description += f"\nPhone number: {property.agent.phone_number}, {property.agent.name}"
+        en_description += f"\nPhone number: {property.agent.phone_number}, {property.agent.name}. Please, use this number. Phone number in account is incorrect."
         return self.__translate.translate(en_description)
