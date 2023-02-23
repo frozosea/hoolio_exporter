@@ -2,6 +2,9 @@ import re
 from abc import ABC
 from abc import abstractmethod
 from typing import Type
+
+import httpx
+
 from entity import Property
 from request import IChatGPTRequest
 
@@ -12,6 +15,38 @@ class ITranslate(ABC):
     @abstractmethod
     def translate(self, en_text: str) -> Description:
         ...
+
+
+class YandexTranslate(ITranslate):
+    def __init__(self, api_key: str, folder_id: str):
+        self.__api_key = api_key
+        self.__folder_id = folder_id
+
+    async def __translate(self, source_lang: str, target_lang: str, text: str):
+        async with httpx.AsyncClient() as session:
+            body = {
+                "sourceLanguageCode": source_lang,
+                "targetLanguageCode": target_lang,
+                "texts": [
+                    text
+                ],
+                "folderId": self.__folder_id}
+
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": "Api-Key {0}".format(self.__api_key)
+            }
+            response = await session.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
+                                          json=body,
+                                          headers=headers
+                                          )
+            j = response.json()
+            return j["translations"][0]["text"]
+
+    async def translate(self, en_text: str) -> Description:
+        ru = await self.__translate("en", "ru", en_text)
+        ge = await self.__translate("en", "ka", en_text)
+        return Description(ru=ru, ge=ge,en=en_text)
 
 
 class ChatGPTTranslate(ITranslate):

@@ -7,6 +7,7 @@ from cron import CronManager
 from request import ChatGPTRequest
 from description import IDescriptionGenerator
 from description import ChatGPTTranslate
+from description import YandexTranslate
 from description import DescriptionGenerator
 from request import IBrowserRequest
 from request import BrowserRequest
@@ -91,13 +92,22 @@ class Builder:
             self._property_repository.seed_data(self.__config.agent_network.agents)
 
     def __configure_description_generator(self):
+        request = ChatGPTRequest(self.__config.builder_config.chat_gpt_api_key)
+
+
+        if self.__config.builder_config.use_yandex_translate:
+            translate = YandexTranslate(self.__config.builder_config.yandex_api_key,
+                                        self.__config.builder_config.yandex_folder_id)
+        else:
+            translate = ChatGPTTranslate(request)
+
+
         if self.__config.builder_config.description_generator_use_mockup:
             self._description_generator = DescriptionGeneratorMockUp()
         else:
-            request = ChatGPTRequest(self.__config.builder_config.chat_gpt_api_key)
             self._description_generator = DescriptionGenerator(
                 request,
-                ChatGPTTranslate(request)
+                translate
             )
 
     def __configure_browser_request(self):

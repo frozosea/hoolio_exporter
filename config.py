@@ -4,7 +4,7 @@
 #
 # and then, to convert JSON from a string, do
 #
-#     result = welcome4_from_dict(json.loads(json_string))
+#     result = welcome3_from_dict(json.loads(json_string))
 
 from typing import Any, List, Optional, TypeVar, Callable, Type, cast
 
@@ -125,8 +125,11 @@ class BuilderConfig:
     browser_url: str
     browser_password: str
     machine_ip: str
+    use_yandex_translate: bool
+    yandex_api_key: str
+    yandex_folder_id: str
 
-    def __init__(self, base_logs_dir_name: str, upload_images_app_url: str, proxies: List[str], chat_gpt_api_key: str, telegram_bot_token: str, cron_use_mockup: bool, description_generator_use_mockup: bool, proxy_repository_use_mockup: bool, property_repository_use_mockup: bool, transport_use_mockup: bool, browser_url: str, browser_password: str, machine_ip: str) -> None:
+    def __init__(self, base_logs_dir_name: str, upload_images_app_url: str, proxies: List[str], chat_gpt_api_key: str, telegram_bot_token: str, cron_use_mockup: bool, description_generator_use_mockup: bool, proxy_repository_use_mockup: bool, property_repository_use_mockup: bool, transport_use_mockup: bool, browser_url: str, browser_password: str, machine_ip: str, use_yandex_translate: bool, yandex_api_key: str, yandex_folder_id: str) -> None:
         self.base_logs_dir_name = base_logs_dir_name
         self.upload_images_app_url = upload_images_app_url
         self.proxies = proxies
@@ -140,6 +143,9 @@ class BuilderConfig:
         self.browser_url = browser_url
         self.browser_password = browser_password
         self.machine_ip = machine_ip
+        self.use_yandex_translate = use_yandex_translate
+        self.yandex_api_key = yandex_api_key
+        self.yandex_folder_id = yandex_folder_id
 
     @staticmethod
     def from_dict(obj: Any) -> 'BuilderConfig':
@@ -157,7 +163,10 @@ class BuilderConfig:
         browser_url = from_str(obj.get("browser_url"))
         browser_password = from_str(obj.get("browser_password"))
         machine_ip = from_str(obj.get("machine_ip"))
-        return BuilderConfig(base_logs_dir_name, upload_images_app_url, proxies, chat_gpt_api_key, telegram_bot_token, cron_use_mockup, description_generator_use_mockup, proxy_repository_use_mockup, property_repository_use_mockup, transport_use_mockup, browser_url, browser_password, machine_ip)
+        use_yandex_translate = from_bool(obj.get("use_yandex_translate"))
+        yandex_api_key = from_str(obj.get("yandex_api_key"))
+        yandex_folder_id = from_str(obj.get("yandex_folder_id"))
+        return BuilderConfig(base_logs_dir_name, upload_images_app_url, proxies, chat_gpt_api_key, telegram_bot_token, cron_use_mockup, description_generator_use_mockup, proxy_repository_use_mockup, property_repository_use_mockup, transport_use_mockup, browser_url, browser_password, machine_ip, use_yandex_translate, yandex_api_key, yandex_folder_id)
 
     def to_dict(self) -> dict:
         result: dict = {}
@@ -174,6 +183,9 @@ class BuilderConfig:
         result["browser_url"] = from_str(self.browser_url)
         result["browser_password"] = from_str(self.browser_password)
         result["machine_ip"] = from_str(self.machine_ip)
+        result["use_yandex_translate"] = from_bool(self.use_yandex_translate)
+        result["yandex_api_key"] = from_str(self.yandex_api_key)
+        result["yandex_folder_id"] = from_str(self.yandex_folder_id)
         return result
 
 
@@ -331,3 +343,4 @@ class Config:
         result["agent_network"] = to_class(AgentNetwork, self.agent_network)
         result["builder_config"] = to_class(BuilderConfig, self.builder_config)
         return result
+
