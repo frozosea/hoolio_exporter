@@ -1,15 +1,9 @@
 {
   "telegram": {
-    "api_id": "21711875",
-    "api_hash": "d321ea5a12670fdfc75fa2760b4eff5d",
-    "phone_number": "+79934845204",
-    "groups": [
-      -1001608584386,
-      -1001742702027,
-      -1001595796778,
-      -1001313637679,
-      -1001654357100
-    ],
+    "api_id": "",
+    "api_hash": "",
+    "phone_number": "",
+    "groups": [],
     "sleep_on_exception_seconds": 1,
     "retry_on_exception_repeat_number": 2,
     "use_mockup": false
@@ -17,24 +11,21 @@
   "facebook": {
     "email": "",
     "password": "",
-    "groups": [
-      "902733610870404",
-      "957274158594042"
-    ],
-    "sleep_on_exception_seconds": 15,
+    "groups": [],
+    "sleep_on_exception_seconds": 3600,
     "retry_on_exception_repeat_number": 2,
-    "use_mockup": true
+    "use_mockup": false
   },
   "myhome": {
     "login": "",
     "password": "",
-    "sleep_on_exception_seconds": 10,
+    "sleep_on_exception_seconds": 3600,
     "retry_on_exception_repeat_number": 2,
     "use_mockup": false
   },
   "ss": {
-    "email": "i20072004@gmail.com",
-    "password": "pridumal94",
+    "email": "",
+    "password": "",
     "sleep_on_exception_seconds": 1,
     "retry_on_exception_repeat_number": 2,
     "use_mockup": true
@@ -42,52 +33,32 @@
   "agent_network": {
     "agents": [
       {
-        "telegram_id": 341561549,
-        "telegram_nickname": "dizolo",
-        "name": "Ivan",
-        "phone_number": "568654121"
-      },
-      {
-        "telegram_id": 6231373491,
-        "telegram_nickname": "daria_kuleshovaaa",
-        "name": "Daria",
-        "phone_number": "568654121"
-      },
-      {
-        "telegram_id": 6235960404,
-        "telegram_nickname": "hoolioagent2",
-        "name": "Maria",
-        "phone_number": "568654121"
+        "telegram_id": -1,
+        "telegram_nickname": "",
+        "name": "",
+        "phone_number": ""
       }
     ],
-    "group_chat_id": 1,
+    "group_chat_id": -1,
     "fee_percent": 3,
     "city": "батуми"
   },
   "builder_config": {
     "base_logs_dir_name": "logs",
     "upload_images_app_url": "http://localhost:3000",
-    "proxies": [
-      "http://i20072004:eovSNU7Cp4@185.127.165.144:51523",
-      "http://i20072004:eovSNU7Cp4@185.127.165.131:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.110:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.10:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.131:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.66:51523",
-      "http://i20072004:eovSNU7Cp4@185.127.164.105:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.164:51523",
-      "http://i20072004:eovSNU7Cp4@185.127.164.39:51523",
-      "http://i20072004:eovSNU7Cp4@5.133.163.185:51523"
-    ],
-    "chat_gpt_api_key": "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",
-    "telegram_bot_token": "6055458087:AAE44J64ZwfT83gK5ZCq6nqblToci6sGy64",
-    "cron_use_mockup": false,
-    "description_generator_use_mockup": false,
-    "proxy_repository_use_mockup": false,
-    "property_repository_use_mockup": false,
+    "proxies": [],
+    "chat_gpt_api_key": "",
+    "telegram_bot_token": "",
+    "cron_use_mockup": true,
+    "description_generator_use_mockup": true,
+    "proxy_repository_use_mockup": true,
+    "property_repository_use_mockup": true,
     "transport_use_mockup": false,
     "browser_url": "http://localhost:5009",
-    "browser_password": "pridumal94",
-    "machine_ip": "159.65.81.193"
+    "browser_password": "",
+    "machine_ip": "",
+    "use_yandex_translate": true,
+    "yandex_api_key": "",
+    "yandex_folder_id": ""
   }
 }
